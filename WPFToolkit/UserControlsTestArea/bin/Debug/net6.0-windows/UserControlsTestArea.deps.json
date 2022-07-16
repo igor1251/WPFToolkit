@@ -1,0 +1,52 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "UserControlsTestArea/1.0.0": {
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "7.1.2",
+          "WPFToolkit.NetCore": "1.0.0"
+        },
+        "runtime": {
+          "UserControlsTestArea.dll": {}
+        }
+      },
+      "CommunityToolkit.Mvvm/7.1.2": {
+        "runtime": {
+          "lib/net5.0/CommunityToolkit.Mvvm.dll": {
+            "assemblyVersion": "7.1.0.0",
+            "fileVersion": "7.1.2.1"
+          }
+        }
+      },
+      "WPFToolkit.NetCore/1.0.0": {
+        "runtime": {
+          "WPFToolkit.NetCore.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "UserControlsTestArea/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "CommunityToolkit.Mvvm/7.1.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/zEpNH3FIBFY2iZRBi+S3Sia3q2yJgy1IQHnWRW7MdhQIe3IGcA1TGqJdbtjiJBmNy4v7kkPdNzgYlvvNDjXZg==",
+      "path": "communitytoolkit.mvvm/7.1.2",
+      "hashPath": "communitytoolkit.mvvm.7.1.2.nupkg.sha512"
+    },
+    "WPFToolkit.NetCore/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
