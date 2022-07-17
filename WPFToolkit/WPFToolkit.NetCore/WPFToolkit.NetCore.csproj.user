@@ -5,12 +5,18 @@
     <Compile Update="Controls\PeriodControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\ReportControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\BusyControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\PeriodControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\ReportControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

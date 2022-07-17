@@ -2,27 +2,41 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WPFToolkit.NetCore.AuxiliaryTypes;
 
 namespace UserControlsTestArea
 {
     public partial class MainViewModel : ObservableObject
     {
         [ObservableProperty]
-        bool isBusy = false;
+        Func<DataTable> getContent = () =>
+        {
+            var table = new DataTable();
+
+            table.Columns.AddRange(new DataColumn[]
+            {
+                new DataColumn("test1"),
+                new DataColumn("test2")
+            });
+
+            table.Rows.Add("value1", true);
+
+            return table;
+        };
 
         [ObservableProperty]
-        string busyContent = "Подождите....";
-
-        [ICommand]
-        void MakeBusy()
+        Func<DataGridColumnDescription[]> getColumns = () =>
         {
-            IsBusy = true;
-            MessageBox.Show("Test started");
-            IsBusy = false;
-        }
+            return new DataGridColumnDescription[]
+            {
+                new DataGridColumnDescription("test1", "Тестовая колонка 1", DataGridColumnType.TEXT_COLUMN),
+                new DataGridColumnDescription("test2", "Тестовая колонка 2", DataGridColumnType.CHECKBOX_COLUMN),
+            };
+        };
     }
 }

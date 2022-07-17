@@ -24,6 +24,9 @@
         }
       },
       "WPFToolkit.NetCore/1.0.0": {
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "7.1.2"
+        },
         "runtime": {
           "WPFToolkit.NetCore.dll": {}
         }

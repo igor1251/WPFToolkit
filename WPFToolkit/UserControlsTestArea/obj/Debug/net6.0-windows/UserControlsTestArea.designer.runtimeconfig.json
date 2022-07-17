@@ -12,8 +12,8 @@
       }
     ],
     "additionalProbingPaths": [
-      "C:\\Users\\babichev.i\\.dotnet\\store\\|arch|\\|tfm|",
-      "C:\\Users\\babichev.i\\.nuget\\packages",
+      "C:\\Users\\STARCONTROL\\.dotnet\\store\\|arch|\\|tfm|",
+      "C:\\Users\\STARCONTROL\\.nuget\\packages",
       "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
     ],
     "configProperties": {

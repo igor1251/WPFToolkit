@@ -12,12 +12,8 @@
     </Window.DataContext>
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <controls:PeriodControl Grid.Row="0" Margin="5 5 5 5" SelectedDateFormat="Long" />
-        <Button Content="BusyContent test" Grid.Row="1" Margin="5 5 5 5" Command="{Binding MakeBusyCommand}" />
-        <controls:BusyControl BusyContent="{Binding BusyContent}" IsBusy="{Binding IsBusy}" Grid.Row="0" Grid.RowSpan="3" />
+        <controls:ReportControl x:Name="Report" Grid.Row="1" Margin="5 5 5 5" ContentGetter="{Binding GetContent}" DataGridColumnsGetter="{Binding GetColumns}" />
     </Grid>
 </Window>
