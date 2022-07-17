@@ -24,12 +24,6 @@ C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\ref\UserControlsTestArea.dll
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\bin\Debug\net6.0-windows\CommunityToolkit.Mvvm.dll
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
-D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.csproj.AssemblyReference.cache
-D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\App.g.cs
-D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea_MarkupCompile.cache
-D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.dll
-D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\refint\UserControlsTestArea.dll
-D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.pdb
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\bin\Debug\net6.0-windows\UserControlsTestArea.exe
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\bin\Debug\net6.0-windows\UserControlsTestArea.deps.json
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\bin\Debug\net6.0-windows\UserControlsTestArea.runtimeconfig.json
@@ -38,8 +32,11 @@ D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\bin\Deb
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\bin\Debug\net6.0-windows\CommunityToolkit.Mvvm.dll
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\bin\Debug\net6.0-windows\WPFToolkit.NetCore.dll
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\bin\Debug\net6.0-windows\WPFToolkit.NetCore.pdb
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.csproj.AssemblyReference.cache
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\MainWindow.g.cs
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\App.g.cs
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea_MarkupCompile.cache
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea_MarkupCompile.lref
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\MainWindow.baml
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.g.resources
@@ -48,5 +45,8 @@ D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Deb
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.AssemblyInfo.cs
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.csproj.CoreCompileInputs.cache
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.csproj.CopyComplete
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.dll
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\refint\UserControlsTestArea.dll
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.pdb
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\UserControlsTestArea.genruntimeconfig.cache
 D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\UserControlsTestArea\obj\Debug\net6.0-windows\ref\UserControlsTestArea.dll

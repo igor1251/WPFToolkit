@@ -14,6 +14,13 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <controls:ReportControl x:Name="Report" Grid.Row="1" Margin="5 5 5 5" ContentGetter="{Binding GetContent}" DataGridColumnsGetter="{Binding GetColumns}" />
+        <controls:ReportControl ContentGetter="{Binding GetContent}" DataGridColumnsGetter="{Binding GetColumns}"
+                                SelectedRow="{Binding SelectedRowView, Mode=TwoWay}">
+            <controls:ReportControl.ContentGridContextMenu>
+                <ContextMenu>
+                    <MenuItem Header="Показать данные выделенной ячейки" Command="{Binding ShowSelectedDataCommand}" />
+                </ContextMenu>
+            </controls:ReportControl.ContentGridContextMenu>
+        </controls:ReportControl>
     </Grid>
 </Window>

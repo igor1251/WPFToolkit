@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Data;
@@ -21,19 +22,26 @@ namespace WPFToolkit.NetCore.Controls
     /// <summary>
     /// Логика взаимодействия для ReportControl.xaml
     /// </summary>
+    [INotifyPropertyChanged]
     public partial class ReportControl : UserControl
     {
         public static readonly DependencyProperty ContentGetterProperty = 
-            DependencyProperty.Register("ContentGetter", typeof(Func<DataTable>), typeof(ReportControl), new PropertyMetadata(null));
+            DependencyProperty.Register("ContentGetter", typeof(Func<DataTable>), typeof(ReportControl));
 
         public static readonly DependencyProperty DataGridColumnsGetterProperty =
-            DependencyProperty.Register("DataGridColumnsGetter", typeof(Func<DataGridColumnDescription[]>), typeof(ReportControl), new PropertyMetadata(null));
+            DependencyProperty.Register("DataGridColumnsGetter", typeof(Func<DataGridColumnDescription[]>), typeof(ReportControl));
 
         public static readonly DependencyProperty IsBusyProperty = 
             DependencyProperty.Register("IsBusy", typeof(bool), typeof(ReportControl), new PropertyMetadata(false));
 
         public static readonly DependencyProperty IsContentGridReadOnlyProperty =
             DependencyProperty.Register("IsContentGridReadOnly", typeof(bool), typeof(ReportControl), new PropertyMetadata(true));
+
+        public static readonly DependencyProperty SelectedRowProperty =
+            DependencyProperty.Register("SelectedRow", typeof(DataRowView), typeof(ReportControl));
+
+        public static readonly DependencyProperty ContentGridContextMenuProperty =
+            DependencyProperty.Register("ContentGridContextMenu", typeof(ContextMenu), typeof(ReportControl));
 
         /// <summary>
         /// Действие, выполняемое для получения DataTable 
@@ -56,15 +64,6 @@ namespace WPFToolkit.NetCore.Controls
         }
 
         /// <summary>
-        /// Индикатор исполнения какой-либо операии в элементе управления
-        /// </summary>
-        public bool IsBusy
-        {
-            get { return (bool)GetValue(IsBusyProperty); }
-            set { SetValue(IsBusyProperty, value); }
-        }
-
-        /// <summary>
         /// Доступны ячейки DataGrid для редактирования или нет
         /// </summary>
         public bool IsContentGridReadOnly
@@ -74,14 +73,28 @@ namespace WPFToolkit.NetCore.Controls
         }
 
         /// <summary>
-        /// Данные, отображаемые в DataGrid
+        /// Выбранная строка DataGridView
         /// </summary>
-        public DataTable ReportContent { get; set; } = new DataTable();
+        public DataRowView? SelectedRow
+        {
+            get { return (DataRowView?)GetValue(SelectedRowProperty); }
+            set { SetValue(SelectedRowProperty, value); }
+        }
 
         /// <summary>
-        /// Выбранная строка DataGrid
+        /// Контекстное меню для DataGrid
         /// </summary>
-        public object? SelectedRow { get; set; }
+        public ContextMenu ContentGridContextMenu
+        {
+            get { return (ContextMenu)GetValue(ContentGridContextMenuProperty); }
+            set { SetValue(ContentGridContextMenuProperty, value); }
+        }
+
+        /// <summary>
+        /// Данные, отображаемые в DataGrid
+        /// </summary>
+        [ObservableProperty]
+        DataTable reportContent = new();
 
         /// <summary>
         /// Универсальный метод для создания столбца для DataGrid
@@ -101,8 +114,13 @@ namespace WPFToolkit.NetCore.Controls
             return column;
         }
 
+        /// <summary>
+        /// Метод, генерирующий коллекцию столбцов для DataGrid
+        /// </summary>
         void UpdateColumns()
         {
+            if (DataGridColumnsGetter == null) return;
+
             ContentGrid.Columns.Clear();
             foreach (var columnDescription in DataGridColumnsGetter.Invoke())
             {
@@ -118,8 +136,12 @@ namespace WPFToolkit.NetCore.Controls
             }
         }
 
+        /// <summary>
+        /// Метод, получающий содержимое для DataGrid
+        /// </summary>
         void UpdateContent()
         {
+            if (ContentGetter == null) return;
             ReportContent = ContentGetter.Invoke();
         }
 
@@ -138,6 +160,11 @@ namespace WPFToolkit.NetCore.Controls
         }
 
         private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+            Update();
+        }
+
+        private void Report_Loaded(object sender, RoutedEventArgs e)
         {
             Update();
         }

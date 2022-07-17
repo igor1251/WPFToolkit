@@ -25,6 +25,7 @@ namespace UserControlsTestArea
             });
 
             table.Rows.Add("value1", true);
+            table.Rows.Add("value2", false);
 
             return table;
         };
@@ -38,5 +39,15 @@ namespace UserControlsTestArea
                 new DataGridColumnDescription("test2", "Тестовая колонка 2", DataGridColumnType.CHECKBOX_COLUMN),
             };
         };
+
+        [ObservableProperty]
+        DataRowView? selectedRowView;
+
+        [ICommand]
+        void ShowSelectedData()
+        {
+            if (SelectedRowView == null) return;
+            MessageBox.Show($"{SelectedRowView.Row["test1"]} {SelectedRowView.Row["test2"]}");
+        }
     }
 }

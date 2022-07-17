@@ -5,8 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFToolkit.NetCore.Controls"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d"
+             MinHeight="200"
+             MinWidth="400"
+             Loaded="Report_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
@@ -19,14 +21,16 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <!--<local:BusyControl Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="3" IsBusy="{Binding ElementName=Report, Path=IsBusy, Mode=TwoWay}" />-->
-
-        <StackPanel x:Name="TopPane" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center">
-            <Button x:Name="UpdateButton" Content="Обновить" Width="100" Margin="0 0 5 5" Click="UpdateButton_Click" />
+        <StackPanel x:Name="TopPane" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 0 5">
+            <Button x:Name="UpdateButton" Content="Обновить" Width="100" Margin="0 0 5 0" Click="UpdateButton_Click" />
         </StackPanel>
 
-        <DataGrid x:Name="ContentGrid" Grid.Column="1" Grid.Row="1" ItemsSource="{Binding ElementName=Report, Path=ReportContent.DefaultView}" AutoGenerateColumns="False"
-                  SelectedItem="{Binding ElementName=Report, Path=SelectedRow}" CanUserDeleteRows="False" IsReadOnly="{Binding ElementName=Report, Path=IsContentGridReadOnly}" />
+        <DataGrid x:Name="ContentGrid" Grid.Column="1" Grid.Row="1" SelectionMode="Single" SelectionUnit="FullRow" 
+                  CanUserDeleteRows="False" AutoGenerateColumns="False"
+                  ItemsSource="{Binding ElementName=Report, Path=ReportContent.DefaultView}" 
+                  SelectedItem="{Binding ElementName=Report, Path=SelectedRow, Mode=TwoWay}" 
+                  IsReadOnly="{Binding ElementName=Report, Path=IsContentGridReadOnly}"
+                  ContextMenu="{Binding ElementName=Report, Path=ContentGridContextMenu}" />
 
         <StackPanel x:Name="LeftPane" Grid.Column="0" Grid.Row="1" />
         <StackPanel x:Name="RightPane" Grid.Column="2" Grid.Row="1" />
