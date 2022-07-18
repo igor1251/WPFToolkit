@@ -41,3 +41,5 @@ D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\ReportControl.g.cs
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\ReportControl.baml
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\MarkedTextBoxControl.g.cs
+C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\MarkedTextBoxControl.baml

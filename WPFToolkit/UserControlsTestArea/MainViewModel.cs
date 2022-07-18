@@ -65,6 +65,12 @@ namespace UserControlsTestArea
         [ObservableProperty]
         string filter = string.Empty;
 
+        [ObservableProperty]
+        string entryDescription = "testEntry";
+
+        [ObservableProperty]
+        string entryText = string.Empty;
+
         [ICommand]
         void ShowSelectedData()
         {
