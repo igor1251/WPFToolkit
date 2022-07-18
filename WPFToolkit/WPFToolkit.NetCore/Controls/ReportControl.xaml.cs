@@ -107,6 +107,9 @@ namespace WPFToolkit.NetCore.Controls
                 control.RightItemsControl.Items.Add(e.NewValue as UIElement);
         }
 
+        /// <summary>
+        /// Индикатор занятости контрола
+        /// </summary>
         public bool IsBusy
         {
             get { return (bool)GetValue(IsBusyProperty); }
