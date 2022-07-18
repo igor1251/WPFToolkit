@@ -27,7 +27,18 @@
                     <VirtualizingStackPanel Orientation="Horizontal" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
-            <Button x:Name="UpdateButton" Content="Обновить" Width="100" Margin="0 5 5 5" Click="UpdateButton_Click" />
+            <Button x:Name="UpdateButton" Width="100" Height="25" Margin="0 5 5 5" Click="UpdateButton_Click">
+                <Button.Content>
+                    <Grid VerticalAlignment="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/WPFToolkit.NetCore;component/Controls/Assets/Icons/download-data.png" Width="17" Height="17" Grid.Column="0" Margin="0 0 2 0" />
+                        <TextBlock Text="Обновить" Grid.Column="1" Margin="2 0 0 0" />
+                    </Grid>
+                </Button.Content>
+            </Button>
         </ItemsControl>
 
         <DataGrid x:Name="ContentGrid" Grid.Column="1" Grid.Row="1" SelectionMode="Single" SelectionUnit="FullRow" 

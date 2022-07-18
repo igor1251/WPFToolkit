@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Controls\Assets\Icons\download-data.png" />
     <None Remove="Controls\Assets\Icons\left-arrow.png" />
     <None Remove="Controls\Assets\Icons\right-arrow.png" />
   </ItemGroup>
@@ -16,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Controls\Assets\Icons\download-data.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Controls\Assets\Icons\left-arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
