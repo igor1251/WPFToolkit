@@ -21,9 +21,14 @@
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
 
-        <StackPanel x:Name="TopPane" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Orientation="Horizontal" VerticalAlignment="Center" Margin="0 0 0 5">
-            <Button x:Name="UpdateButton" Content="Обновить" Width="100" Margin="0 0 5 0" Click="UpdateButton_Click" />
-        </StackPanel>
+        <ItemsControl x:Name="TopItemsControl" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="0 0 0 5">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <VirtualizingStackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <Button x:Name="UpdateButton" Content="Обновить" Width="100" Margin="0 5 5 5" Click="UpdateButton_Click" />
+        </ItemsControl>
 
         <DataGrid x:Name="ContentGrid" Grid.Column="1" Grid.Row="1" SelectionMode="Single" SelectionUnit="FullRow" 
                   CanUserDeleteRows="False" AutoGenerateColumns="False"
@@ -32,9 +37,8 @@
                   IsReadOnly="{Binding ElementName=Report, Path=IsContentGridReadOnly}"
                   ContextMenu="{Binding ElementName=Report, Path=ContentGridContextMenu}" />
 
-        <StackPanel x:Name="LeftPane" Grid.Column="0" Grid.Row="1" Orientation="Vertical" />
-        <StackPanel x:Name="RightPane" Grid.Column="2" Grid.Row="1" Orientation="Vertical" />
-        <StackPanel x:Name="BottomPane" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" />
-
+        <ItemsControl x:Name="LeftItemsControl" Grid.Column="0" Grid.Row="1"/>
+        <ItemsControl x:Name="RightItemsControl" Grid.Column="2" Grid.Row="1" />
+        <ItemsControl x:Name="BottomItemsControl" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" />
     </Grid>
 </UserControl>

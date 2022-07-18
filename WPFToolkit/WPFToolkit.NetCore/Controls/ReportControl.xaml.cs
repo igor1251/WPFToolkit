@@ -43,6 +43,106 @@ namespace WPFToolkit.NetCore.Controls
         public static readonly DependencyProperty ContentGridContextMenuProperty =
             DependencyProperty.Register("ContentGridContextMenu", typeof(ContextMenu), typeof(ReportControl));
 
+        public static readonly DependencyProperty BottomControlProperty =
+            DependencyProperty.RegisterAttached("BottomControl", typeof(UIElement), typeof(ReportControl),
+                new UIPropertyMetadata(null, BottomControlChanged));
+
+        public static readonly DependencyProperty TopControlProperty =
+            DependencyProperty.RegisterAttached("TopControl", typeof(UIElement), typeof(ReportControl),
+                new UIPropertyMetadata(null, TopControlChanged));
+
+        public static readonly DependencyProperty LeftControlProperty =
+            DependencyProperty.RegisterAttached("LeftControl", typeof(UIElement), typeof(ReportControl),
+                new UIPropertyMetadata(null, LeftControlChanged));
+
+        public static readonly DependencyProperty RightControlProperty =
+            DependencyProperty.RegisterAttached("RightControl", typeof(UIElement), typeof(ReportControl),
+                new UIPropertyMetadata(null, RightControlChanged));
+
+        /// <summary>
+        /// Обработчик события изменения UIElement'а
+        /// </summary>
+        /// <param name="d">Элемент, вызвавший событие (Здесь это 100% ReportControl)</param>
+        /// <param name="e">Новое значение поля</param>
+        static void BottomControlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as ReportControl;
+            if (control != null)
+                control.BottomItemsControl.Items.Add(e.NewValue as UIElement);
+        }
+
+        /// <summary>
+        /// Обработчик события изменения UIElement'а
+        /// </summary>
+        /// <param name="d">Элемент, вызвавший событие (Здесь это 100% ReportControl)</param>
+        /// <param name="e">Новое значение поля</param>
+        static void TopControlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as ReportControl;
+            if (control != null)
+                control.TopItemsControl.Items.Add(e.NewValue as UIElement);
+        }
+
+        /// <summary>
+        /// Обработчик события изменения UIElement'а
+        /// </summary>
+        /// <param name="d">Элемент, вызвавший событие (Здесь это 100% ReportControl)</param>
+        /// <param name="e">Новое значение поля</param>
+        static void LeftControlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as ReportControl;
+            if (control != null)
+                control.LeftItemsControl.Items.Add(e.NewValue as UIElement);
+        }
+
+        /// <summary>
+        /// Обработчик события изменения UIElement'а
+        /// </summary>
+        /// <param name="d">Элемент, вызвавший событие (Здесь это 100% ReportControl)</param>
+        /// <param name="e">Новое значение поля</param>
+        static void RightControlChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as ReportControl;
+            if (control != null)
+                control.RightItemsControl.Items.Add(e.NewValue as UIElement);
+        }
+
+        /// <summary>
+        /// Контейнер для элементов, находящихся внизу
+        /// </summary>
+        public UIElement BottomControl
+        {
+            get { return (UIElement)GetValue(BottomControlProperty); }
+            set { SetValue(BottomControlProperty, value); }
+        }
+
+        /// <summary>
+        /// Контейнер для элементов, находящихся слева
+        /// </summary>
+        public UIElement LeftControl
+        {
+            get { return (UIElement)GetValue(LeftControlProperty); }
+            set { SetValue(LeftControlProperty, value); }
+        }
+
+        /// <summary>
+        /// Контейнер для элементов, находящихся справа
+        /// </summary>
+        public UIElement RightControl
+        {
+            get { return (UIElement)GetValue(RightControlProperty); }
+            set { SetValue(RightControlProperty, value); }
+        }
+
+        /// <summary>
+        /// Контейнер для элементов, находящихся сверху
+        /// </summary>
+        public UIElement TopControl
+        {
+            get { return (UIElement)GetValue(TopControlProperty); }
+            set { SetValue(TopControlProperty, value); }
+        }
+
         /// <summary>
         /// Действие, выполняемое для получения DataTable 
         /// с данными для представления в DataGrid
