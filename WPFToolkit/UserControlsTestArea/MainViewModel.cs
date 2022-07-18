@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -13,7 +14,7 @@ using WPFToolkit.NetCore.AuxiliaryTypes;
 
 namespace UserControlsTestArea
 {
-    public partial class MainViewModel : ObservableObject
+    public partial class MainViewModel : ViewModelBase
     {
         [ObservableProperty]
         Func<DataTable> getContent = () =>
@@ -50,6 +51,21 @@ namespace UserControlsTestArea
         {
             if (SelectedRowView == null) return;
             MessageBox.Show($"{SelectedRowView.Row["test1"]} {SelectedRowView.Row["test2"]}");
+        }
+
+        [ICommand]
+        async void MakeBusy()
+        {
+            IsBusy = true;
+            Task t = new Task(() =>
+            {
+                Thread.Sleep(5000);
+            });
+            t.Start();
+            await t.ContinueWith((t) =>
+            {
+                IsBusy = false;
+            });
         }
     }
 }

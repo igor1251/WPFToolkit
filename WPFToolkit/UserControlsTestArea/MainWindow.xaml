@@ -33,9 +33,12 @@
                 <StackPanel Orientation="Horizontal">
                     <Button Content="Test1" Width="100" Margin="5 5 5 5" />
                     <Button Content="Test2" Width="100" Margin="5 5 5 5" />
-                    <Button Content="Test3" Width="100" Margin="5 5 5 5" />
+                    <Button Content="Test3" Width="100" Margin="5 5 5 5" Command="{Binding MakeBusyCommand}" />
                 </StackPanel>
             </controls:ReportControl.TopControl>
         </controls:ReportControl>
+
+        <controls:BusyControl Grid.Row="0" IsBusy="{Binding IsBusy}" />
+
     </Grid>
 </Window>
