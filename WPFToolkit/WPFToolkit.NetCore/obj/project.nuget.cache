@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "DPNxIkTmjUFs3m3Gg6RDuV7baARtc7oKsX7pdQW8tbiPv8SLKxmAmfefPAFemePrlYOQf3xoYAFmETvWi9a6+Q==",
+  "dgSpecHash": "ScYXa04RrXa+ZOfHlcRtHKfTwNXLlgwTrfwRtzeZwcXvCbg1SUh2GzwAM7l2cLx/Ys7tSzer1sqWZ5mKa0wj6A==",
   "success": true,
-  "projectFilePath": "D:\\Libraries\\Documents\\GitHub\\WPFToolkit\\WPFToolkit\\WPFToolkit.NetCore\\WPFToolkit.NetCore.csproj",
+  "projectFilePath": "C:\\Users\\babichev.i\\Documents\\GitHub\\WPFToolkit\\WPFToolkit\\WPFToolkit.NetCore\\WPFToolkit.NetCore.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\STARCONTROL\\.nuget\\packages\\communitytoolkit.mvvm\\7.1.2\\communitytoolkit.mvvm.7.1.2.nupkg.sha512"
+    "C:\\Users\\babichev.i\\.nuget\\packages\\communitytoolkit.mvvm\\7.1.2\\communitytoolkit.mvvm.7.1.2.nupkg.sha512"
   ],
   "logs": []
 }

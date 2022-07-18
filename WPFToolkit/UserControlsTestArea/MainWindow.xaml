@@ -15,7 +15,7 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <controls:ReportControl ContentGetter="{Binding GetContent}" DataGridColumnsGetter="{Binding GetColumns}"
-                                SelectedRow="{Binding SelectedRowView, Mode=TwoWay}">
+                                SelectedRow="{Binding SelectedRowView, Mode=TwoWay}" Margin="5 5 5 5">
             <controls:ReportControl.ContentGridContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Показать данные выделенной ячейки" Command="{Binding ShowSelectedDataCommand}" />

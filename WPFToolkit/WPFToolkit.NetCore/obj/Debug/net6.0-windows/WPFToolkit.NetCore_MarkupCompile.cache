@@ -4,7 +4,7 @@
 library
 C#
 .cs
-D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\
+C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\
 WPFToolkit.NetCore
 none
 false
@@ -13,7 +13,7 @@ TRACE;DEBUG;NET;NET6_0;NETCOREAPP
 3263822471
 
 71956279952
-195-1997537289
+195-128789810
 Controls\BusyControl.xaml;Controls\PeriodControl.xaml;Controls\ReportControl.xaml;
 
 False

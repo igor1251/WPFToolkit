@@ -61,7 +61,7 @@ namespace WPFToolkit.NetCore.Controls {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/WPFToolkit.NetCore;component/controls/busycontrol.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/WPFToolkit.NetCore;V1.0.0.0;component/controls/busycontrol.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\Controls\BusyControl.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);

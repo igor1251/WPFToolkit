@@ -32,8 +32,8 @@
                   IsReadOnly="{Binding ElementName=Report, Path=IsContentGridReadOnly}"
                   ContextMenu="{Binding ElementName=Report, Path=ContentGridContextMenu}" />
 
-        <StackPanel x:Name="LeftPane" Grid.Column="0" Grid.Row="1" />
-        <StackPanel x:Name="RightPane" Grid.Column="2" Grid.Row="1" />
+        <StackPanel x:Name="LeftPane" Grid.Column="0" Grid.Row="1" Orientation="Vertical" />
+        <StackPanel x:Name="RightPane" Grid.Column="2" Grid.Row="1" Orientation="Vertical" />
         <StackPanel x:Name="BottomPane" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2" />
 
     </Grid>
