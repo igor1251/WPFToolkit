@@ -16,20 +16,36 @@ namespace UserControlsTestArea
 {
     public partial class MainViewModel : ViewModelBase
     {
-        [ObservableProperty]
-        Func<DataTable> getContent = () =>
+        static async Task<DataTable> GenDataTable()
         {
             var table = new DataTable();
-
-            table.Columns.AddRange(new DataColumn[]
+            Task genTask = new(() =>
             {
-                new DataColumn("test1"),
-                new DataColumn("test2")
+                
+                table.Columns.AddRange(new DataColumn[]
+                {
+                    new DataColumn("Key"),
+                    new DataColumn("Value")
+                });
+
+                bool flag = false;
+                for (int i = 1; i <= 100; i++)
+                {
+                    flag = !flag;
+                    table.Rows.Add($"value-{i}", flag);
+                }
+
+                Thread.Sleep(4000);
             });
+            genTask.Start();
+            await genTask;
+            return table;
+        }
 
-            table.Rows.Add("value1", true);
-            table.Rows.Add("value2", false);
-
+        [ObservableProperty]
+        Func<Task<DataTable>> getContent = async () =>
+        {
+            var table = await GenDataTable();
             return table;
         };
 
@@ -38,8 +54,8 @@ namespace UserControlsTestArea
         {
             return new DataGridColumnDescription[]
             {
-                new DataGridColumnDescription("test1", "Тестовая колонка 1", DataGridColumnType.TEXT_COLUMN),
-                new DataGridColumnDescription("test2", "Тестовая колонка 2", DataGridColumnType.CHECKBOX_COLUMN),
+                new DataGridColumnDescription("Key", "Ключ", DataGridColumnType.TEXT_COLUMN),
+                new DataGridColumnDescription("Value", "Значение", DataGridColumnType.CHECKBOX_COLUMN),
             };
         };
 

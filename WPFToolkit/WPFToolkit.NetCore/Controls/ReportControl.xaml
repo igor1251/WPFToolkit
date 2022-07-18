@@ -51,5 +51,7 @@
         <ItemsControl x:Name="LeftItemsControl" Grid.Column="0" Grid.Row="1"/>
         <ItemsControl x:Name="RightItemsControl" Grid.Column="2" Grid.Row="1" />
         <ItemsControl x:Name="BottomItemsControl" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" />
+
+        <local:BusyControl Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="3" IsBusy="{Binding ElementName=Report, Path=IsBusy}" />
     </Grid>
 </UserControl>

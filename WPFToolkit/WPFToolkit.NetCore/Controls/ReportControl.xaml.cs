@@ -26,7 +26,7 @@ namespace WPFToolkit.NetCore.Controls
     public partial class ReportControl : UserControl
     {
         public static readonly DependencyProperty ContentGetterProperty = 
-            DependencyProperty.Register("ContentGetter", typeof(Func<DataTable>), typeof(ReportControl));
+            DependencyProperty.Register("ContentGetter", typeof(Func<Task<DataTable>>), typeof(ReportControl));
 
         public static readonly DependencyProperty DataGridColumnsGetterProperty =
             DependencyProperty.Register("DataGridColumnsGetter", typeof(Func<DataGridColumnDescription[]>), typeof(ReportControl));
@@ -107,6 +107,12 @@ namespace WPFToolkit.NetCore.Controls
                 control.RightItemsControl.Items.Add(e.NewValue as UIElement);
         }
 
+        public bool IsBusy
+        {
+            get { return (bool)GetValue(IsBusyProperty); }
+            set { SetValue(IsBusyProperty, value); }
+        }
+
         /// <summary>
         /// Контейнер для элементов, находящихся внизу
         /// </summary>
@@ -147,9 +153,9 @@ namespace WPFToolkit.NetCore.Controls
         /// Действие, выполняемое для получения DataTable 
         /// с данными для представления в DataGrid
         /// </summary>
-        public Func<DataTable> ContentGetter
+        public Func<Task<DataTable>> ContentGetter
         {
-            get { return (Func<DataTable>)GetValue(ContentGetterProperty); }
+            get { return (Func<Task<DataTable>>)GetValue(ContentGetterProperty); }
             set { SetValue(ContentGetterProperty, value); }
         }
 
@@ -239,17 +245,19 @@ namespace WPFToolkit.NetCore.Controls
         /// <summary>
         /// Метод, получающий содержимое для DataGrid
         /// </summary>
-        void UpdateContent()
+        async void UpdateContent()
         {
             if (ContentGetter == null) return;
-            ReportContent = ContentGetter.Invoke();
+            IsBusy = true;
+            ReportContent = await ContentGetter.Invoke();
+            IsBusy = false;
         }
 
         /// <summary>
         /// Метод, необходимый для обновления содержимого отчета
         /// </summary>
         public void Update()
-        {
+        {      
             UpdateContent();
             UpdateColumns();
         }

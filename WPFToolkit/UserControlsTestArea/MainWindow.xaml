@@ -15,7 +15,8 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <controls:ReportControl ContentGetter="{Binding GetContent}" DataGridColumnsGetter="{Binding GetColumns}"
-                                SelectedRow="{Binding SelectedRowView, Mode=TwoWay}" Margin="5 5 5 5">
+                                SelectedRow="{Binding SelectedRowView, Mode=TwoWay}" Margin="5 5 5 5"
+                                IsBusy="{Binding IsBusy, Mode=TwoWay}">
             <controls:ReportControl.ContentGridContextMenu>
                 <ContextMenu>
                     <MenuItem Header="Показать данные выделенной ячейки" Command="{Binding ShowSelectedDataCommand}" />
@@ -37,8 +38,6 @@
                 </StackPanel>
             </controls:ReportControl.TopControl>
         </controls:ReportControl>
-
-        <controls:BusyControl Grid.Row="0" IsBusy="{Binding IsBusy}" />
 
     </Grid>
 </Window>
