@@ -62,11 +62,14 @@ namespace UserControlsTestArea
         [ObservableProperty]
         DataRowView? selectedRowView;
 
+        [ObservableProperty]
+        string filter = string.Empty;
+
         [ICommand]
         void ShowSelectedData()
         {
             if (SelectedRowView == null) return;
-            MessageBox.Show($"{SelectedRowView.Row["test1"]} {SelectedRowView.Row["test2"]}");
+            MessageBox.Show($"{SelectedRowView.Row["Key"]} {SelectedRowView.Row["Value"]}");
         }
 
         [ICommand]
@@ -82,6 +85,12 @@ namespace UserControlsTestArea
             {
                 IsBusy = false;
             });
+        }
+
+        [ICommand]
+        void ApplyFilter()
+        {
+            Filter = "Key LIKE 'value-30'";
         }
     }
 }

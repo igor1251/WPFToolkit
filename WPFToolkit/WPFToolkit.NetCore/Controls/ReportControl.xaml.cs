@@ -59,6 +59,28 @@ namespace WPFToolkit.NetCore.Controls
             DependencyProperty.RegisterAttached("RightControl", typeof(UIElement), typeof(ReportControl),
                 new UIPropertyMetadata(null, RightControlChanged));
 
+        public static readonly DependencyProperty RowFilterProperty = 
+            DependencyProperty.RegisterAttached("RowFilter", typeof(string), typeof(ReportControl), new PropertyMetadata(string.Empty, new PropertyChangedCallback(OnRowFilterChanged)));
+
+        /// <summary>
+        /// Обработчик события изменения фильтра для содержимого DataGrid
+        /// </summary>
+        /// <param name="d">Элемент, вызвавший событие (Здесь это 100% ReportControl)</param>
+        /// <param name="e">>Новое значение поля</param>
+        static void OnRowFilterChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            ((ReportControl)d).ReportContent.DefaultView.RowFilter = e.NewValue.ToString();
+        }
+
+        /// <summary>
+        /// Свойство, устанавливающее фильтр для содержимого DataGrid
+        /// </summary>
+        public string RowFilter
+        {
+            get { return (string)GetValue(RowFilterProperty); }
+            set { SetValue(RowFilterProperty, value); }
+        }
+
         /// <summary>
         /// Обработчик события изменения UIElement'а
         /// </summary>
@@ -251,8 +273,12 @@ namespace WPFToolkit.NetCore.Controls
         async void UpdateContent()
         {
             if (ContentGetter == null) return;
+            
             IsBusy = true;
+            
             ReportContent = await ContentGetter.Invoke();
+            RowFilter = string.Empty;
+            
             IsBusy = false;
         }
 
