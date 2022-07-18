@@ -43,3 +43,5 @@ C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\ob
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\MarkedTextBoxControl.g.cs
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\MarkedTextBoxControl.baml
+C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\TimePickerControl.g.cs
+C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\TimePickerControl.baml

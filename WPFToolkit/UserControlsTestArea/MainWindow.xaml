@@ -35,9 +35,9 @@
                     <controls:MarkedTextBoxControl Description="{Binding EntryDescription}" Text="{Binding EntryText}" Margin="5 5 5 5" />
                     <Button Content="Filter" Width="100" Margin="5 5 5 5" Command="{Binding ApplyFilterCommand}" />
                     <Button Content="Busy" Width="100" Margin="5 5 5 5" Command="{Binding MakeBusyCommand}" />
+                    <controls:TimePickerControl />
                 </StackPanel>
             </controls:ReportControl.TopControl>
         </controls:ReportControl>
-
     </Grid>
 </Window>

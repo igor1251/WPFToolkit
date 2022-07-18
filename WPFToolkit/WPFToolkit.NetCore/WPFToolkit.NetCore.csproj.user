@@ -11,6 +11,9 @@
     <Compile Update="Controls\ReportControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\TimePickerControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\BusyControl.xaml">
@@ -23,6 +26,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\ReportControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\TimePickerControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
