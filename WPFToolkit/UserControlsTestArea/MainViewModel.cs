@@ -35,7 +35,7 @@ namespace UserControlsTestArea
                     table.Rows.Add($"value-{i}", flag);
                 }
 
-                Thread.Sleep(4000);
+                //Thread.Sleep(4000);
             });
             genTask.Start();
             await genTask;
@@ -71,6 +71,9 @@ namespace UserControlsTestArea
         [ObservableProperty]
         string entryText = string.Empty;
 
+        [ObservableProperty]
+        DateTime selectedDateTime = DateTime.Now;
+
         [ICommand]
         void ShowSelectedData()
         {
@@ -97,6 +100,12 @@ namespace UserControlsTestArea
         void ApplyFilter()
         {
             Filter = "Key LIKE 'value-30'";
+        }
+
+        [ICommand]
+        void ShowSelectedDateTime()
+        {
+            MessageBox.Show(SelectedDateTime.ToString());
         }
     }
 }

@@ -6,6 +6,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFToolkit.NetCore.Controls"
              mc:Ignorable="d"
-             MinWidth="100">
-    <TextBox Text="{Binding ElementName=TimePicker, Path=TimeString, Mode=TwoWay}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+             MinWidth="75" MaxWidth="75"
+             MinHeight="15" MaxHeight="20">
+    <TextBox Text="{Binding ElementName=TimePicker, Path=TimeString, Mode=TwoWay}" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" 
+             FontStretch="ExtraExpanded" FontWeight="Bold"/>
 </UserControl>

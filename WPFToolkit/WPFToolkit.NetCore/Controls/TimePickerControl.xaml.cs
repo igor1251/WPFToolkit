@@ -35,7 +35,7 @@ namespace WPFToolkit.NetCore.Controls
         public static readonly DependencyProperty TimeProperty =
             DependencyProperty.Register("Time", typeof(DateTime), typeof(TimePickerControl));
 
-        const string TIME_VALIDATION_REGEX = @"^([0-2][0-4]:[0-5][0-9]:[0-5][0-9])$";
+        const string TIME_VALIDATION_REGEX = @"^([0-2][0-3]:[0-5][0-9]|[0-2][0-3]:[0-5][0-9]:[0-5][0-9])$";
 
         string timeString = "00:00:00";
         public string TimeString
@@ -45,6 +45,7 @@ namespace WPFToolkit.NetCore.Controls
             {
                 if (Regex.IsMatch(value, TIME_VALIDATION_REGEX))
                 {
+                    if (value.Split(':').Length == 2) value += ":00";
                     SetProperty(ref timeString, value);
                 }
             }

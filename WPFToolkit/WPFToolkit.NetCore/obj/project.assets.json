@@ -63,6 +63,7 @@
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
+        "C:\\GitLab\\Sources\\Core\\BackOffice\\.nuget\\NuGet.Config",
         "C:\\Users\\babichev.i\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
@@ -72,6 +73,8 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\packages\\TelerikPackages": {},
+        "https://ams-nexus1.xbet.lan/repository/nuget-global/": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {

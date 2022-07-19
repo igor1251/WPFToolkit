@@ -2,6 +2,9 @@
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup />
   <ItemGroup>
+    <Compile Update="Controls\DateTimePickerControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\MarkedTextBoxControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -17,6 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="Controls\BusyControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\DateTimePickerControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Controls\MarkedTextBoxControl.xaml">
