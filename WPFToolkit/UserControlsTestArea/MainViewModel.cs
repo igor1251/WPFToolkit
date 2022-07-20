@@ -11,6 +11,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using WPFToolkit.NetCore.AuxiliaryTypes;
+using WPFToolkit.NetCore.AuxiliaryTypes.DataGridColumns;
+using WPFToolkit.NetCore.Controls;
 
 namespace UserControlsTestArea
 {
@@ -35,7 +37,7 @@ namespace UserControlsTestArea
                     table.Rows.Add($"value-{i}", flag);
                 }
 
-                //Thread.Sleep(4000);
+                Thread.Sleep(2000);
             });
             genTask.Start();
             await genTask;
@@ -106,6 +108,21 @@ namespace UserControlsTestArea
         void ShowSelectedDateTime()
         {
             MessageBox.Show(SelectedDateTime.ToString());
+        }
+
+        [ICommand]
+        void RunReportWindow()
+        {
+            var viewModel = new ReportViewModel()
+            {
+                ReportContentGetter = GetContent,
+                DataGridColumnsGetter = GetColumns,
+                ViewCaptionGetter = () => $"Заголовок {DateTime.Now.DayOfWeek}",
+                RowFilterGetter = () => Filter,
+                RowDoubleClicked = (sender, e) => { MessageBox.Show("Да, работает"); }
+            };
+            var win = new ReportWindow(viewModel);
+            win.ShowDialog();
         }
     }
 }

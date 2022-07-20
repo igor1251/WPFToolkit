@@ -1,0 +1,45 @@
+﻿<Window x:Class="WPFToolkit.NetCore.Controls.ReportWindow"
+        x:Name="Report"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFToolkit.NetCore.Controls"
+        mc:Ignorable="d"
+        Loaded="Report_Loaded"
+        Title="{Binding ElementName=Report, Path=Caption}" Height="450" Width="800">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition />
+            <ColumnDefinition Width="Auto" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Menu Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Экспорт">
+                    <MenuItem Header="В текстовый файл" />
+                    <MenuItem Header="В файл MS Excel" />
+                </MenuItem>
+                <MenuItem Header="Импорт" />
+            </MenuItem>
+            <MenuItem Header="Справка" />
+        </Menu>
+        
+        <DataGrid x:Name="DataGrid" Grid.Column="1" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
+                  ItemsSource="{Binding ElementName=Report, Path=ReportContent}">
+            <DataGrid.Columns>
+                
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel x:Name="TopControlsPanel" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" />
+
+        <local:BusyControl Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="4" IsBusy="{Binding ElementName=Report, Path=IsBusy}" />
+    </Grid>
+</Window>

@@ -14,7 +14,13 @@
     <Compile Update="Controls\ReportControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Controls\ReportWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Controls\TimePickerControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Controls\UpdateButtonControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>
@@ -34,7 +40,13 @@
     <Page Update="Controls\ReportControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Controls\ReportWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Controls\TimePickerControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Controls\UpdateButtonControl.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

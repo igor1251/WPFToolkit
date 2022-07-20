@@ -47,3 +47,7 @@ C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\ob
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\TimePickerControl.baml
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\DateTimePickerControl.g.cs
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\DateTimePickerControl.baml
+C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\ReportWindow.g.cs
+C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\ReportWindow.baml
+C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\UpdateButtonControl.g.cs
+C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\UpdateButtonControl.baml

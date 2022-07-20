@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using WPFToolkit.NetCore.AuxiliaryTypes;
+using WPFToolkit.NetCore.AuxiliaryTypes.DataGridColumns;
 
 namespace WPFToolkit.NetCore.Controls
 {

@@ -14,7 +14,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <controls:ReportControl ContentGetter="{Binding GetContent}" DataGridColumnsGetter="{Binding GetColumns}"
+        <controls:ReportControl DataGridColumnsGetter="{Binding GetColumns}"
                                 SelectedRow="{Binding SelectedRowView, Mode=TwoWay}" Margin="5 5 5 5" RowFilter="{Binding Filter, Mode=TwoWay}"
                                 IsBusy="{Binding IsBusy, Mode=TwoWay}">
             <controls:ReportControl.ContentGridContextMenu>
@@ -25,8 +25,8 @@
             <controls:ReportControl.BottomControl>
                 <StackPanel Orientation="Horizontal">
                     <controls:PeriodControl Margin="5 5 5 5" />
-                    <Button Content="Show selected date" Width="100" Margin="5 5 5 5" Command="{Binding ShowSelectedDateTimeCommand}" />
-                    <Button Content="Test2" Width="100" Margin="5 5 5 5" />
+                    <Button Content="Show selected date" Width="Auto" Margin="5 5 5 5" Command="{Binding ShowSelectedDateTimeCommand}" />
+                    <Button Content="Run report window" Width="Auto" Margin="5 5 5 5" Command="{Binding RunReportWindowCommand}" />
                     <Button Content="Test3" Width="100" Margin="5 5 5 5" />
                 </StackPanel>
             </controls:ReportControl.BottomControl>
