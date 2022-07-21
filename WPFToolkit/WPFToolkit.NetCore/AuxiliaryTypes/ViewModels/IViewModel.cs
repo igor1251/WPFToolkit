@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WPFToolkit.NetCore.AuxiliaryTypes.Buttons;
 using WPFToolkit.NetCore.AuxiliaryTypes.DataGridColumns;
-using WPFToolkit.NetCore.AuxiliaryTypes.EntryFields;
+using WPFToolkit.NetCore.AuxiliaryTypes.TextBoxes;
 using WPFToolkit.NetCore.AuxiliaryTypes.Menus;
 
 namespace WPFToolkit.NetCore.AuxiliaryTypes.ViewModels
@@ -37,7 +37,7 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.ViewModels
         /// <summary>
         /// Делегат на метод получения полей для ввода
         /// </summary>
-        Func<IEnumerable<EntryDescription>>? EntriesGetter { get; init; }
+        Func<IEnumerable<MarkedTextBoxDescription>>? EntriesGetter { get; init; }
         /// <summary>
         /// Делегат на метод получения описания окна
         /// </summary>

@@ -27,6 +27,20 @@ namespace WPFToolkit.NetCore.Controls
     [INotifyPropertyChanged]
     public partial class ReportWindow : Window
     {
+        #region Constants
+        const double BUTTON_LEFT_PADDING = 20;
+        const double BUTTON_RIGHT_PADDING = 20;
+        const double BUTTON_TOP_PADDING = 5;
+        const double BUTTON_BOTTOM_PADDING = 5;
+
+        const double DEFAULT_LEFT_MARGIN = 5;
+        const double DEFAULT_RIGHT_MARGIN = 5;
+        const double DEFAULT_TOP_MARGIN = 5;
+        const double DEFAULT_BOTTOM_MARGIN = 5;
+
+        const double DEFAULT_BORDER_THICKNESS = 1.5;
+        #endregion
+
         #region Dependency properties
         public static readonly DependencyProperty ViewModelProperty =
             DependencyProperty.Register("ViewModel", typeof(IViewModel), typeof(ReportWindow));
@@ -113,6 +127,11 @@ namespace WPFToolkit.NetCore.Controls
             }            
             return validationResult;
         }
+        /// <summary>
+        /// Генерирует коллекцию элементов MenuItem из коллекции описаний
+        /// </summary>
+        /// <param name="descriptions">Коллекция описаний элементов</param>
+        /// <returns>Список MenuItem</returns>
         List<MenuItem> GenerateMenuItemsCollection(IEnumerable<MenuItemDescription>? descriptions)
         {
             if (descriptions == null) return null;
@@ -130,6 +149,29 @@ namespace WPFToolkit.NetCore.Controls
                 result.Add(menuItem);
             }
             return result;
+        }
+        /// <summary>
+        /// Размещает указанный элемент в заданную панель
+        /// </summary>
+        /// <param name="control">Элемент управления, который нужно разместить</param>
+        /// <param name="location">С какой стороны формы разместить</param>
+        void PushToPanel(UIElement control, AuxiliaryTypes.Universal.UIElementLocation location)
+        {
+            switch (location)
+            {
+                case AuxiliaryTypes.Universal.UIElementLocation.TOP:
+                    TopControlsPanel.Children.Add(control);
+                    break;
+                case AuxiliaryTypes.Universal.UIElementLocation.LEFT:
+                    LeftControlsPanel.Children.Add(control);
+                    break;
+                case AuxiliaryTypes.Universal.UIElementLocation.RIGHT:
+                    RightControlsPanel.Children.Add(control);
+                    break;
+                case AuxiliaryTypes.Universal.UIElementLocation.BOTTOM:
+                    BottomControlsPanel.Children.Add(control);
+                    break;
+            }
         }
         #endregion
 
@@ -211,55 +253,30 @@ namespace WPFToolkit.NetCore.Controls
             {
                 var button = new Button();
                 button.Content = item.Content;
+                button.Padding = new Thickness(BUTTON_LEFT_PADDING, BUTTON_TOP_PADDING, BUTTON_RIGHT_PADDING, BUTTON_BOTTOM_PADDING);
                 button.Command = item.Command;
-                button.BorderThickness = new Thickness(1.5);
-                button.Margin = new Thickness(5, 5, 5, 5);
+                button.BorderThickness = new Thickness(DEFAULT_BORDER_THICKNESS);
+                button.Margin = new Thickness(DEFAULT_LEFT_MARGIN, DEFAULT_TOP_MARGIN, DEFAULT_RIGHT_MARGIN, DEFAULT_BOTTOM_MARGIN);
+                if (item.BackgroundColor != null) button.Background = new SolidColorBrush(item.BackgroundColor.Value);
                 button.HorizontalContentAlignment = HorizontalAlignment.Center;
                 button.VerticalContentAlignment = VerticalAlignment.Center;
-                switch (item.Location)
-                {
-                    case AuxiliaryTypes.Universal.UIElementLocation.TOP:
-                        TopControlsPanel.Children.Add(button);
-                        break;
-                    case AuxiliaryTypes.Universal.UIElementLocation.LEFT:
-                        LeftControlsPanel.Children.Add(button);
-                        break;
-                    case AuxiliaryTypes.Universal.UIElementLocation.RIGHT:
-                        RightControlsPanel.Children.Add(button);
-                        break;
-                    case AuxiliaryTypes.Universal.UIElementLocation.BOTTOM:
-                        BottomControlsPanel.Children.Add(button);
-                        break;
-                }
+                PushToPanel(button, item.Location);
             }
         }
         /// <summary>
         /// Метод наполнения полями для ввода
         /// </summary>
-        void SetupEntries()
+        void SetupTextBoxes()
         {
             if (ViewModel.EntriesGetter == null) return;
             foreach (var item in ViewModel.EntriesGetter.Invoke())
             {
-                var entry = new MarkedTextBoxControl();
-                entry.Margin = new Thickness(5, 5, 5, 5);
-                entry.Label = item.Label;
-                entry.TextChanged = item.TextChanged;
-                switch (item.Location)
-                {
-                    case AuxiliaryTypes.Universal.UIElementLocation.TOP:
-                        TopControlsPanel.Children.Add(entry);
-                        break;
-                    case AuxiliaryTypes.Universal.UIElementLocation.LEFT:
-                        LeftControlsPanel.Children.Add(entry);
-                        break;
-                    case AuxiliaryTypes.Universal.UIElementLocation.RIGHT:
-                        RightControlsPanel.Children.Add(entry);
-                        break;
-                    case AuxiliaryTypes.Universal.UIElementLocation.BOTTOM:
-                        BottomControlsPanel.Children.Add(entry);
-                        break;
-                }
+                var textBox = new MarkedTextBoxControl();
+                textBox.Margin = new Thickness(DEFAULT_LEFT_MARGIN, DEFAULT_TOP_MARGIN, DEFAULT_RIGHT_MARGIN, DEFAULT_BOTTOM_MARGIN);
+                textBox.Label = item.Label;
+                textBox.RegexMask = item.RegexMast;
+                if (item.TextChanged != null) textBox.TextChanged = item.TextChanged;
+                PushToPanel(textBox, item.Location);
             }
         }
         #endregion
@@ -278,7 +295,7 @@ namespace WPFToolkit.NetCore.Controls
             SetupWindowMenu();
             SetupDataGridContextMenu();
             SetupButtons();
-            SetupEntries();
+            SetupTextBoxes();
         }
         #endregion
 

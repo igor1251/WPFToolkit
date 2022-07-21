@@ -3,22 +3,19 @@ using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
 using System.Windows.Input;
 using WPFToolkit.NetCore.AuxiliaryTypes;
 using WPFToolkit.NetCore.AuxiliaryTypes.Buttons;
 using WPFToolkit.NetCore.AuxiliaryTypes.DataGridColumns;
-using WPFToolkit.NetCore.AuxiliaryTypes.EntryFields;
+using WPFToolkit.NetCore.AuxiliaryTypes.TextBoxes;
 using WPFToolkit.NetCore.AuxiliaryTypes.Menus;
 using WPFToolkit.NetCore.AuxiliaryTypes.ViewModels;
-using WPFToolkit.NetCore.Controls;
-
+using WPFToolkit.NetCore.AuxiliaryTypes.Universal;
+using System.Windows.Media;
 
 namespace UserControlsTestArea
 {
@@ -33,7 +30,7 @@ namespace UserControlsTestArea
         public Func<string>? RowFilterGetter { get; set; }
         public DataRow? SelectedRow { get; set; }
         public MouseButtonEventHandler? RowDoubleClicked { get; init; }
-        public Func<IEnumerable<EntryDescription>>? EntriesGetter { get; init; }
+        public Func<IEnumerable<MarkedTextBoxDescription>>? EntriesGetter { get; init; }
 
         static async Task<DataTable> GenDataTable()
         {
@@ -170,20 +167,20 @@ namespace UserControlsTestArea
             {
                 return new List<ButtonDescription>()
                 {
-                    new ButtonDescription("Show Entry Text", ShowEntryTextCommand, ButtonType.NONE, WPFToolkit.NetCore.AuxiliaryTypes.Universal.UIElementLocation.BOTTOM),
-                    new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, WPFToolkit.NetCore.AuxiliaryTypes.Universal.UIElementLocation.LEFT),
-                    new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, WPFToolkit.NetCore.AuxiliaryTypes.Universal.UIElementLocation.RIGHT),
-                    new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, WPFToolkit.NetCore.AuxiliaryTypes.Universal.UIElementLocation.TOP)
+                    new ButtonDescription("Show Entry Text", ShowEntryTextCommand, ButtonType.NONE, UIElementLocation.BOTTOM),
+                    new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, UIElementLocation.LEFT),
+                    new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, UIElementLocation.RIGHT),
+                    new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, UIElementLocation.TOP, Color.FromRgb(200, 100, 50))
                 };
             };
             EntriesGetter = () =>
             {
-                return new List<EntryDescription>()
+                return new List<MarkedTextBoxDescription>()
                 {
-                    new EntryDescription("shit", WPFToolkit.NetCore.AuxiliaryTypes.Universal.UIElementLocation.BOTTOM, (sender, e) =>
+                    new MarkedTextBoxDescription("shit", UIElementLocation.BOTTOM, (sender, e) =>
                     {
                         EntryText = ((TextBox)sender).Text;
-                    })
+                    }, "^([0-9]|[1-9][0-9])$")
                 };
             };
         }
