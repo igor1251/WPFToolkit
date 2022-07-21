@@ -5,7 +5,7 @@ using WPFToolkit.NetCore.AuxiliaryTypes.Universal;
 
 namespace WPFToolkit.NetCore.AuxiliaryTypes.Buttons
 {
-    public class ButtonDescription
+    public class ButtonDescription : BaseUIElementDescription
     {
         string content = "button";
         /// <summary>
@@ -32,10 +32,6 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.Buttons
         /// Тип кнопки (ссылка, обычная или большая)
         /// </summary>
         public ButtonType Type { get; set; } = ButtonType.NONE;
-        /// <summary>
-        /// В каком контейнере расположить кнопку
-        /// </summary>
-        public UIElementLocation Location { get; set; } = UIElementLocation.BOTTOM;
         /// <summary>
         /// Конструктор лкасса, описывающего кнопку
         /// </summary>

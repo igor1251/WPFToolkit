@@ -9,10 +9,12 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using WPFToolkit.NetCore.AuxiliaryTypes;
 using WPFToolkit.NetCore.AuxiliaryTypes.Buttons;
 using WPFToolkit.NetCore.AuxiliaryTypes.DataGridColumns;
+using WPFToolkit.NetCore.AuxiliaryTypes.EntryFields;
 using WPFToolkit.NetCore.AuxiliaryTypes.Menus;
 using WPFToolkit.NetCore.Controls;
 
@@ -119,47 +121,15 @@ namespace UserControlsTestArea
         }
 
         [ICommand]
+        void ShowEntryText()
+        {
+            MessageBox.Show(EntryText);
+        }
+
+        [ICommand]
         void RunReportWindow()
         {
-            var viewModel = new ReportViewModel()
-            {
-                ReportContentGetter = GetContent,
-                DataGridColumnsGetter = GetColumns,
-                ViewCaptionGetter = () => $"Заголовок {DateTime.Now.DayOfWeek}",
-                RowFilterGetter = () => Filter,
-                RowDoubleClicked = (sender, e) => { MessageBox.Show("Да, работает"); },
-                WindowMenuItemsGetter = () =>
-                {
-                    return new List<MenuItemDescription>
-                    {
-                        new MenuItemDescription("File", new List<MenuItemDescription>()
-                        {
-                            new MenuItemDescription ("Open", null, ShowMessageCommand),
-                        }, null),
-                    };
-                },
-                ContextMenuItemsGetter = () =>
-                {
-                    return new List<MenuItemDescription>
-                    {
-                        new MenuItemDescription("Yeah", new List<MenuItemDescription>()
-                        {
-                            new MenuItemDescription ("UwU", null, ShowMessageCommand),
-                        }, null),
-                    };
-                },
-                ButtonsGetter = () =>
-                {
-                    return new List<ButtonDescription>()
-                    {
-                        new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, WPFToolkit.NetCore.AuxiliaryTypes.Universal.UIElementLocation.BOTTOM),
-                        new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, WPFToolkit.NetCore.AuxiliaryTypes.Universal.UIElementLocation.LEFT),
-                        new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, WPFToolkit.NetCore.AuxiliaryTypes.Universal.UIElementLocation.RIGHT),
-                        new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, WPFToolkit.NetCore.AuxiliaryTypes.Universal.UIElementLocation.TOP)
-                    };
-                },
-            };
-            var win = new ReportWindow(viewModel);
+            var win = new ReportWindow(new ReportViewModel());
             win.ShowDialog();
         }
     }

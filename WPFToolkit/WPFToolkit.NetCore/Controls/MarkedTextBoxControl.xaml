@@ -6,13 +6,15 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:WPFToolkit.NetCore.Controls"
              mc:Ignorable="d" 
-             MinWidth="150">
+             MinWidth="150"
+             Loaded="MarkedTextBox_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock Grid.Column="0" Margin="0 0 5 0" Text="{Binding ElementName=MarkedTextBox, Path=Description}" VerticalAlignment="Center" HorizontalAlignment="Left" />
-        <TextBox Grid.Column="1" Text="{Binding ElementName=MarkedTextBox, Path=Text}" VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+        <TextBlock Grid.Column="0" Margin="0 0 5 0" Text="{Binding ElementName=MarkedTextBox, Path=Label}" VerticalAlignment="Center" HorizontalAlignment="Left" />
+        <TextBox x:Name="TextBox" Grid.Column="1" Text="{Binding ElementName=MarkedTextBox, Path=Text, UpdateSourceTrigger=PropertyChanged}" 
+                 VerticalAlignment="Center" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
     </Grid>
 </UserControl>

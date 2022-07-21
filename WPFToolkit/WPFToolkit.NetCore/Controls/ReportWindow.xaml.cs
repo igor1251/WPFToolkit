@@ -54,10 +54,10 @@ namespace WPFToolkit.NetCore.Controls
         bool isBusy = false;
 
         [ObservableProperty]
-        List<MenuItem> windowMenuItems;
+        List<MenuItem>? windowMenuItems;
 
         [ObservableProperty]
-        List<MenuItem> dataGridContextMenuItems;
+        List<MenuItem>? dataGridContextMenuItems;
 
         [ObservableProperty]
         bool windowMenuEnabled = false;
@@ -212,7 +212,7 @@ namespace WPFToolkit.NetCore.Controls
                 var button = new Button();
                 button.Content = item.Content;
                 button.Command = item.Command;
-                button.Width = item.Content.Length + 50;
+                button.BorderThickness = new Thickness(1.5);
                 button.Margin = new Thickness(5, 5, 5, 5);
                 button.HorizontalContentAlignment = HorizontalAlignment.Center;
                 button.VerticalContentAlignment = VerticalAlignment.Center;
@@ -233,9 +233,43 @@ namespace WPFToolkit.NetCore.Controls
                 }
             }
         }
+        /// <summary>
+        /// Метод наполнения полями для ввода
+        /// </summary>
+        void SetupEntries()
+        {
+            if (ViewModel.EntriesGetter == null) return;
+            foreach (var item in ViewModel.EntriesGetter.Invoke())
+            {
+                var entry = new MarkedTextBoxControl();
+                entry.Margin = new Thickness(5, 5, 5, 5);
+                entry.Label = item.Label;
+                entry.TextChanged = item.TextChanged;
+                switch (item.Location)
+                {
+                    case AuxiliaryTypes.Universal.UIElementLocation.TOP:
+                        TopControlsPanel.Children.Add(entry);
+                        break;
+                    case AuxiliaryTypes.Universal.UIElementLocation.LEFT:
+                        LeftControlsPanel.Children.Add(entry);
+                        break;
+                    case AuxiliaryTypes.Universal.UIElementLocation.RIGHT:
+                        RightControlsPanel.Children.Add(entry);
+                        break;
+                    case AuxiliaryTypes.Universal.UIElementLocation.BOTTOM:
+                        BottomControlsPanel.Children.Add(entry);
+                        break;
+                }
+            }
+        }
         #endregion
 
         #region EventHandlers
+        /// <summary>
+        /// Обработчик события, при котором элементы управления загружены и готовы
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         void Report_Loaded(object sender, RoutedEventArgs e)
         {
             Update();
@@ -244,6 +278,7 @@ namespace WPFToolkit.NetCore.Controls
             SetupWindowMenu();
             SetupDataGridContextMenu();
             SetupButtons();
+            SetupEntries();
         }
         #endregion
 

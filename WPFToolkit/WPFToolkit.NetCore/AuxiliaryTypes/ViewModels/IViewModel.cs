@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using WPFToolkit.NetCore.AuxiliaryTypes.Buttons;
 using WPFToolkit.NetCore.AuxiliaryTypes.DataGridColumns;
+using WPFToolkit.NetCore.AuxiliaryTypes.EntryFields;
 using WPFToolkit.NetCore.AuxiliaryTypes.Menus;
 
 namespace WPFToolkit.NetCore.AuxiliaryTypes.ViewModels
@@ -33,6 +34,10 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.ViewModels
         /// Делегат на метод получения коллекции пунктов меню окна
         /// </summary>
         Func<IEnumerable<MenuItemDescription>>? WindowMenuItemsGetter { get; init; }
+        /// <summary>
+        /// Делегат на метод получения полей для ввода
+        /// </summary>
+        Func<IEnumerable<EntryDescription>>? EntriesGetter { get; init; }
         /// <summary>
         /// Делегат на метод получения описания окна
         /// </summary>

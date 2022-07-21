@@ -14,31 +14,6 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <controls:ReportControl DataGridColumnsGetter="{Binding GetColumns}"
-                                SelectedRow="{Binding SelectedRowView, Mode=TwoWay}" Margin="5 5 5 5" RowFilter="{Binding Filter, Mode=TwoWay}"
-                                IsBusy="{Binding IsBusy, Mode=TwoWay}">
-            <controls:ReportControl.ContentGridContextMenu>
-                <ContextMenu>
-                    <MenuItem Header="Показать данные выделенной ячейки" Command="{Binding ShowSelectedDataCommand}" />
-                </ContextMenu>
-            </controls:ReportControl.ContentGridContextMenu>
-            <controls:ReportControl.BottomControl>
-                <StackPanel Orientation="Horizontal">
-                    <controls:PeriodControl Margin="5 5 5 5" />
-                    <Button Content="Show selected date" Width="Auto" Margin="5 5 5 5" Command="{Binding ShowSelectedDateTimeCommand}" />
-                    <Button Content="Run report window" Width="Auto" Margin="5 5 5 5" Command="{Binding RunReportWindowCommand}" />
-                    <Button Content="Test3" Width="100" Margin="5 5 5 5" />
-                </StackPanel>
-            </controls:ReportControl.BottomControl>
-            <controls:ReportControl.TopControl>
-                <StackPanel Orientation="Horizontal">
-                    <controls:MarkedTextBoxControl Description="{Binding EntryDescription}" Text="{Binding EntryText}" Margin="5 5 5 5" />
-                    <Button Content="Filter" Width="100" Margin="5 5 5 5" Command="{Binding ApplyFilterCommand}" />
-                    <Button Content="Busy" Width="100" Margin="5 5 5 5" Command="{Binding MakeBusyCommand}" />
-                    <controls:TimePickerControl />
-                    <controls:DateTimePickerControl SelectedDateTime="{Binding SelectedDateTime, Mode=TwoWay}" />
-                </StackPanel>
-            </controls:ReportControl.TopControl>
-        </controls:ReportControl>
+        <Button Content="Run report window" Width="Auto" Margin="5 5 5 5" Command="{Binding RunReportWindowCommand}" />
     </Grid>
 </Window>
