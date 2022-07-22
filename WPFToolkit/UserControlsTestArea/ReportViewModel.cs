@@ -19,170 +19,170 @@ using System.Windows.Media;
 
 namespace UserControlsTestArea
 {
-    public partial class ReportViewModel : ViewModelBase, IViewModel
+    public partial class ReportViewModel : ViewModelBase
     {
-        public Func<Task<DataTable>> ReportContentGetter { get; init; }
-        public Func<IEnumerable<DataGridColumnDescription>> DataGridColumnsGetter { get; init; }
-        public Func<IEnumerable<ButtonDescription>>? ButtonsGetter { get; init; }
-        public Func<IEnumerable<MenuItemDescription>>? ContextMenuItemsGetter { get; init; }
-        public Func<IEnumerable<MenuItemDescription>>? WindowMenuItemsGetter { get; init; }
-        public Func<string> ViewCaptionGetter { get; init; }
-        public Func<string>? RowFilterGetter { get; set; }
-        public DataRow? SelectedRow { get; set; }
-        public MouseButtonEventHandler? RowDoubleClicked { get; init; }
-        public Func<IEnumerable<MarkedTextBoxDescription>>? EntriesGetter { get; init; }
+        //public Func<Task<DataTable>> ReportContentGetter { get; init; }
+        //public Func<IEnumerable<DataGridColumnDescription>> DataGridColumnsGetter { get; init; }
+        //public Func<IEnumerable<ButtonDescription>>? ButtonsGetter { get; init; }
+        //public Func<IEnumerable<MenuItemDescription>>? ContextMenuItemsGetter { get; init; }
+        //public Func<IEnumerable<MenuItemDescription>>? WindowMenuItemsGetter { get; init; }
+        //public Func<string> ViewCaptionGetter { get; init; }
+        //public Func<string>? RowFilterGetter { get; set; }
+        //public DataRow? SelectedRow { get; set; }
+        //public MouseButtonEventHandler? RowDoubleClicked { get; init; }
+        //public Func<IEnumerable<MarkedTextBoxDescription>>? EntriesGetter { get; init; }
 
-        static async Task<DataTable> GenDataTable()
-        {
-            var table = new DataTable();
-            Task genTask = new(() =>
-            {
+        //static async Task<DataTable> GenDataTable()
+        //{
+        //    var table = new DataTable();
+        //    Task genTask = new(() =>
+        //    {
 
-                table.Columns.AddRange(new DataColumn[]
-                {
-                    new DataColumn("Key"),
-                    new DataColumn("Value")
-                });
+        //        table.Columns.AddRange(new DataColumn[]
+        //        {
+        //            new DataColumn("Key"),
+        //            new DataColumn("Value")
+        //        });
 
-                bool flag = false;
-                for (int i = 1; i <= 100; i++)
-                {
-                    flag = !flag;
-                    table.Rows.Add($"value-{i}", flag);
-                }
+        //        bool flag = false;
+        //        for (int i = 1; i <= 100; i++)
+        //        {
+        //            flag = !flag;
+        //            table.Rows.Add($"value-{i}", flag);
+        //        }
 
-                Thread.Sleep(2000);
-            });
-            genTask.Start();
-            await genTask;
-            return table;
-        }
+        //        Thread.Sleep(2000);
+        //    });
+        //    genTask.Start();
+        //    await genTask;
+        //    return table;
+        //}
 
-        [ObservableProperty]
-        Func<Task<DataTable>> getContent = async () =>
-        {
-            var table = await GenDataTable();
-            return table;
-        };
+        //[ObservableProperty]
+        //Func<Task<DataTable>> getContent = async () =>
+        //{
+        //    var table = await GenDataTable();
+        //    return table;
+        //};
 
-        [ObservableProperty]
-        Func<DataGridColumnDescription[]> getColumns = () =>
-        {
-            return new DataGridColumnDescription[]
-            {
-                new DataGridColumnDescription("Key", "Ключ", DataGridColumnType.TEXT_COLUMN),
-                new DataGridColumnDescription("Value", "Значение", DataGridColumnType.CHECKBOX_COLUMN),
-            };
-        };
+        //[ObservableProperty]
+        //Func<DataGridColumnDescription[]> getColumns = () =>
+        //{
+        //    return new DataGridColumnDescription[]
+        //    {
+        //        new DataGridColumnDescription("Key", "Ключ", DataGridColumnType.TEXT_COLUMN),
+        //        new DataGridColumnDescription("Value", "Значение", DataGridColumnType.CHECKBOX_COLUMN),
+        //    };
+        //};
 
-        [ObservableProperty]
-        DataRowView? selectedRowView;
+        //[ObservableProperty]
+        //DataRowView? selectedRowView;
 
-        [ObservableProperty]
-        string filter = string.Empty;
+        //[ObservableProperty]
+        //string filter = string.Empty;
 
-        [ObservableProperty]
-        string entryDescription = "testEntry";
+        //[ObservableProperty]
+        //string entryDescription = "testEntry";
 
-        [ObservableProperty]
-        string entryText = "";
+        //[ObservableProperty]
+        //string entryText = "";
 
-        [ObservableProperty]
-        DateTime selectedDateTime = DateTime.Now;
+        //[ObservableProperty]
+        //DateTime selectedDateTime = DateTime.Now;
 
-        [ICommand]
-        void ShowSelectedData()
-        {
-            if (SelectedRowView == null) return;
-            MessageBox.Show($"{SelectedRowView.Row["Key"]} {SelectedRowView.Row["Value"]}");
-        }
+        //[ICommand]
+        //void ShowSelectedData()
+        //{
+        //    if (SelectedRowView == null) return;
+        //    MessageBox.Show($"{SelectedRowView.Row["Key"]} {SelectedRowView.Row["Value"]}");
+        //}
 
-        [ICommand]
-        async void MakeBusy()
-        {
-            IsBusy = true;
-            Task t = new Task(() =>
-            {
-                Thread.Sleep(5000);
-            });
-            t.Start();
-            await t.ContinueWith((t) =>
-            {
-                IsBusy = false;
-            });
-        }
+        //[ICommand]
+        //async void MakeBusy()
+        //{
+        //    IsBusy = true;
+        //    Task t = new Task(() =>
+        //    {
+        //        Thread.Sleep(5000);
+        //    });
+        //    t.Start();
+        //    await t.ContinueWith((t) =>
+        //    {
+        //        IsBusy = false;
+        //    });
+        //}
 
-        [ICommand]
-        void ApplyFilter()
-        {
-            Filter = "Key LIKE 'value-30'";
-        }
+        //[ICommand]
+        //void ApplyFilter()
+        //{
+        //    Filter = "Key LIKE 'value-30'";
+        //}
 
-        [ICommand]
-        void ShowSelectedDateTime()
-        {
-            MessageBox.Show(SelectedDateTime.ToString());
-        }
+        //[ICommand]
+        //void ShowSelectedDateTime()
+        //{
+        //    MessageBox.Show(SelectedDateTime.ToString());
+        //}
 
-        [ICommand]
-        void ShowMessage()
-        {
-            MessageBox.Show("Работает");
-        }
+        //[ICommand]
+        //void ShowMessage()
+        //{
+        //    MessageBox.Show("Работает");
+        //}
 
-        [ICommand]
-        void ShowEntryText()
-        {
-            MessageBox.Show(EntryText);
-        }
+        //[ICommand]
+        //void ShowEntryText()
+        //{
+        //    MessageBox.Show(EntryText);
+        //}
 
-        public ReportViewModel()
-        {
-            ReportContentGetter = GetContent;
-            DataGridColumnsGetter = GetColumns;
-            ViewCaptionGetter = () => $"Заголовок {DateTime.Now.DayOfWeek}";
-            RowFilterGetter = () => "Key LIKE 'value-30'";
-            RowDoubleClicked = (sender, e) => { MessageBox.Show("Да, работает"); };
-            WindowMenuItemsGetter = () =>
-            {
-                return new List<MenuItemDescription>
-                {
-                    new MenuItemDescription("File", new List<MenuItemDescription>()
-                    {
-                        new MenuItemDescription("Open", null, ShowMessageCommand),
-                    }, null),
-                };
-            };
-            ContextMenuItemsGetter = () =>
-            {
-                return new List<MenuItemDescription>
-                {
-                    new MenuItemDescription("Yeah", new List<MenuItemDescription>()
-                    {
-                        new MenuItemDescription("UwU", null, ShowMessageCommand),
-                    }, null),
-                };
-            };
-            ButtonsGetter = () =>
-            {
-                return new List<ButtonDescription>()
-                {
-                    new ButtonDescription("Show Entry Text", ShowEntryTextCommand, ButtonType.NONE, UIElementLocation.BOTTOM),
-                    new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, UIElementLocation.LEFT),
-                    new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, UIElementLocation.RIGHT),
-                    new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, UIElementLocation.TOP, Color.FromRgb(200, 100, 50))
-                };
-            };
-            EntriesGetter = () =>
-            {
-                return new List<MarkedTextBoxDescription>()
-                {
-                    new MarkedTextBoxDescription("shit", UIElementLocation.BOTTOM, (sender, e) =>
-                    {
-                        EntryText = ((TextBox)sender).Text;
-                    }, "^([0-9]|[1-9][0-9])$")
-                };
-            };
-        }
+        //public ReportViewModel()
+        //{
+        //    ReportContentGetter = GetContent;
+        //    DataGridColumnsGetter = GetColumns;
+        //    ViewCaptionGetter = () => $"Заголовок {DateTime.Now.DayOfWeek}";
+        //    RowFilterGetter = () => "Key LIKE 'value-30'";
+        //    RowDoubleClicked = (sender, e) => { MessageBox.Show("Да, работает"); };
+        //    WindowMenuItemsGetter = () =>
+        //    {
+        //        return new List<MenuItemDescription>
+        //        {
+        //            new MenuItemDescription("File", new List<MenuItemDescription>()
+        //            {
+        //                new MenuItemDescription("Open", null, ShowMessageCommand),
+        //            }, null),
+        //        };
+        //    };
+        //    ContextMenuItemsGetter = () =>
+        //    {
+        //        return new List<MenuItemDescription>
+        //        {
+        //            new MenuItemDescription("Yeah", new List<MenuItemDescription>()
+        //            {
+        //                new MenuItemDescription("UwU", null, ShowMessageCommand),
+        //            }, null),
+        //        };
+        //    };
+        //    ButtonsGetter = () =>
+        //    {
+        //        return new List<ButtonDescription>()
+        //        {
+        //            new ButtonDescription("Show Entry Text", ShowEntryTextCommand, ButtonType.NONE, UIElementLocation.BOTTOM),
+        //            new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, UIElementLocation.LEFT),
+        //            new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, UIElementLocation.RIGHT),
+        //            new ButtonDescription("Test", ShowMessageCommand, ButtonType.NONE, UIElementLocation.TOP, Color.FromRgb(200, 100, 50))
+        //        };
+        //    };
+        //    EntriesGetter = () =>
+        //    {
+        //        return new List<MarkedTextBoxDescription>()
+        //        {
+        //            new MarkedTextBoxDescription("shit", UIElementLocation.BOTTOM, (sender, e) =>
+        //            {
+        //                EntryText = ((TextBox)sender).Text;
+        //            }, "^([0-9]|[1-9][0-9])$")
+        //        };
+        //    };
+        //}
     }
 }

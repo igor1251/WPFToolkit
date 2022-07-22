@@ -6,9 +6,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPFToolkit.NetCore.Controls"
         mc:Ignorable="d"
-        Loaded="Report_Loaded"
-        Title="{Binding ElementName=Report, Path=Caption}" Height="450" Width="800">
-    <Grid>
+        Title="WPF Toolkit preview" Height="450" Width="800">
+    <Grid x:Name="ContentGrid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="Auto" />
             <ColumnDefinition />
@@ -20,20 +19,11 @@
             <RowDefinition />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
-        <Menu x:Name="WindowMenu" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" IsEnabled="{Binding ElementName=Report, Path=WindowMenuEnabled}"
-              ItemsSource="{Binding ElementName=Report, Path=WindowMenuItems}" />
-
-        <DataGrid x:Name="DataGrid" Grid.Column="1" Grid.Row="2" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True"
-                  ItemsSource="{Binding ElementName=Report, Path=ReportContent}">
-        </DataGrid>
-
-        <WrapPanel x:Name="TopControlsPanel" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1">
-            <local:UpdateButtonControl UpdateCommand="{Binding ElementName=Report, Path=UpdateCommand}" Margin="5 5 5 5" />
-        </WrapPanel>
-        <WrapPanel x:Name="LeftControlsPanel" Grid.Column="0" Grid.Row="2" />
-        <WrapPanel x:Name="RightControlsPanel" Grid.Column="2" Grid.Row="2" />
+        <Menu x:Name="WindowMenu" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" />
+        <!--<WrapPanel x:Name="CenterControlsPanel" Grid.Column="1" Grid.Row="2" />-->
+        <WrapPanel x:Name="TopControlsPanel" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" />
+        <WrapPanel x:Name="LeftControlsPanel" Grid.Column="0" Grid.Row="2" Orientation="Vertical" />
+        <WrapPanel x:Name="RightControlsPanel" Grid.Column="2" Grid.Row="2" Orientation="Vertical" />
         <WrapPanel x:Name="BottomControlsPanel" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" />
-
-        <local:BusyControl Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="4" IsBusy="{Binding ElementName=Report, Path=IsBusy}" />
     </Grid>
 </Window>

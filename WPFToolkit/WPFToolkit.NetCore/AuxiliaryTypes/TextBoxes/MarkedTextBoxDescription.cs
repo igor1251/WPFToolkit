@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Windows.Controls;
+using System.Windows.Data;
 using WPFToolkit.NetCore.AuxiliaryTypes.Universal;
 
 namespace WPFToolkit.NetCore.AuxiliaryTypes.TextBoxes
 {
-    public class MarkedTextBoxDescription : BaseUIElementDescription
+    public class MarkedTextBoxDescription
     {
         string label = "MarkedTextBox";
         /// <summary>
@@ -32,10 +33,9 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.TextBoxes
         /// <param name="location">Расположение</param>
         /// <param name="textChanged">Обработчик события изменения текста</param>
         /// <param name="regexMask">Регулярное выражение, фильтрующее ввод</param>
-        public MarkedTextBoxDescription(string label, UIElementLocation location, TextChangedEventHandler? textChanged = null, string regexMask = "")
+        public MarkedTextBoxDescription(string label, TextChangedEventHandler? textChanged = null, string regexMask = "")
         {
             Label = label;
-            Location = location;
             TextChanged = textChanged;
             RegexMast = regexMask;
         }

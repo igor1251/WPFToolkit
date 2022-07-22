@@ -5,7 +5,7 @@ using WPFToolkit.NetCore.AuxiliaryTypes.Universal;
 
 namespace WPFToolkit.NetCore.AuxiliaryTypes.Buttons
 {
-    public class ButtonDescription : BaseUIElementDescription
+    public class ButtonDescription
     {
         string content = "button";
         /// <summary>
@@ -40,12 +40,11 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.Buttons
         /// <param name="type">Тип кнопки (ссылка, обычная или большая)</param>
         /// <param name="location">В каком контейнере расположить кнопку</param>
         /// <param name="color">Цвет кнопки</param>
-        public ButtonDescription(string content, ICommand? command, ButtonType type = ButtonType.BUTTON, UIElementLocation location = UIElementLocation.BOTTOM, Color? color = null)
+        public ButtonDescription(string content, ICommand? command, ButtonType type = ButtonType.BUTTON, Color? color = null)
         {
             Content = content;
             Command = command;
             Type = type;
-            Location = location;
             BackgroundColor = color;
         }
     }

@@ -10,6 +10,13 @@ using WPFToolkit.NetCore.AuxiliaryTypes;
 using WPFToolkit.NetCore.AuxiliaryTypes.DataGridColumns;
 using WPFToolkit.NetCore.Controls;
 using WPFToolkit.NetCore.AuxiliaryTypes.ViewModels;
+using WPFToolkit.NetCore.UIManagers;
+using System.Windows.Controls;
+using System.Collections.Generic;
+using WPFToolkit.NetCore.AuxiliaryTypes.Universal;
+using WPFToolkit.NetCore.AuxiliaryTypes.Buttons;
+using WPFToolkit.NetCore.AuxiliaryTypes.TextBoxes;
+using WPFToolkit.NetCore.AuxiliaryTypes.Menus;
 
 namespace UserControlsTestArea
 {
@@ -34,7 +41,7 @@ namespace UserControlsTestArea
                     table.Rows.Add($"value-{i}", flag);
                 }
 
-                Thread.Sleep(2000);
+                //Thread.Sleep(2000);
             });
             genTask.Start();
             await genTask;
@@ -68,7 +75,7 @@ namespace UserControlsTestArea
         string entryDescription = "testEntry";
 
         [ObservableProperty]
-        string entryText = string.Empty;
+        string entryText = "";
 
         [ObservableProperty]
         DateTime selectedDateTime = DateTime.Now;
@@ -113,16 +120,46 @@ namespace UserControlsTestArea
             MessageBox.Show("Работает");
         }
 
+        Guid textBoxAddr;
+
         [ICommand]
         void ShowEntryText()
         {
-            MessageBox.Show(EntryText);
+            MessageBox.Show((UIElementsManager<Control>.Instance.Get(textBoxAddr) as MarkedTextBoxControl)?.Text);
         }
 
         [ICommand]
-        void RunReportWindow()
+        async void RunReportWindow()
         {
-            var win = new ReportWindow(new ReportViewModel());
+            var win = new ReportWindow();
+
+            Dictionary<UIElementLocation, IEnumerable<Guid>> controls = new();
+            textBoxAddr = UIElementsDecorator.CreateMarkedTextBox(new MarkedTextBoxDescription("test", null, "^([0-9]|[1-9][0-9])$"));
+            controls.Add(UIElementLocation.TOP, new List<Guid>()
+            {
+                UIElementsDecorator.CreateButton(new ButtonDescription("test", ShowMessageCommand)),
+                textBoxAddr,
+            });
+            controls.Add(UIElementLocation.MENU, new List<Guid>()
+            {
+                UIElementsDecorator.CreateMenu(new List<MenuItemDescription>
+                {
+                    new MenuItemDescription("Yeah", new List<MenuItemDescription>
+                    {
+                        new("UwU", null, ShowEntryTextCommand),
+                    }, null),
+                }, "File"),
+            });
+            controls.Add(UIElementLocation.CENTER, new List<Guid>()
+            {
+                UIElementsDecorator.CreateDataGrid(new DataGridColumnDescription[]
+                {
+                    new("Key", "Ключ", DataGridColumnType.TEXT_COLUMN),
+                    new("Value", "Значение", DataGridColumnType.CHECKBOX_COLUMN),
+                }, await GetContent.Invoke()),
+            });
+            win.ControlsCollection = controls;
+
             win.ShowDialog();
         }
     }

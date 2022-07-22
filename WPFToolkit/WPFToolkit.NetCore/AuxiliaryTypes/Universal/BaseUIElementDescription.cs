@@ -3,14 +3,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Data;
 
 namespace WPFToolkit.NetCore.AuxiliaryTypes.Universal
 {
     public class BaseUIElementDescription
     {
         /// <summary>
-        /// Указание, в каком контейнере нужно разместить элемент управления
+        /// DataContext для элемента управления (необходим для привязки)
         /// </summary>
-        public UIElementLocation Location { get; set; }
+        public object? Source { get; set; } 
+        /// <summary>
+        /// Описание привязок элемента управления
+        /// </summary>
+        public string? Property { get; set; }
     }
 }

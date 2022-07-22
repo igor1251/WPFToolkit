@@ -14,6 +14,8 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.Universal
         TOP,
         LEFT,
         RIGHT,
-        BOTTOM
+        BOTTOM,
+        CENTER,
+        MENU
     }
 }
