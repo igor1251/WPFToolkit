@@ -55,7 +55,7 @@ namespace WPFToolkit.NetCore.Controls
         {
             get { return (IDictionary<UIElementLocation, IEnumerable<Guid>>)GetValue(ControlsCollectionProperty); }
             set 
-            { 
+            {
                 foreach (var location in value.Keys)
                 {
                     foreach (var guid in value[location])
