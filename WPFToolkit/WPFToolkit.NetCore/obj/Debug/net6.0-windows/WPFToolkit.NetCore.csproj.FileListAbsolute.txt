@@ -51,3 +51,14 @@ C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\ob
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\ReportWindow.baml
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\UpdateButtonControl.g.cs
 C:\Users\babichev.i\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\UpdateButtonControl.baml
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\DateTimePickerControl.g.cs
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\MarkedTextBoxControl.g.cs
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\ReportWindow.g.cs
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\TimePickerControl.g.cs
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\UpdateButtonControl.g.cs
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\GeneratedInternalTypeHelper.g.cs
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\DateTimePickerControl.baml
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\MarkedTextBoxControl.baml
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\ReportWindow.baml
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\TimePickerControl.baml
+D:\Libraries\Documents\GitHub\WPFToolkit\WPFToolkit\WPFToolkit.NetCore\obj\Debug\net6.0-windows\Controls\UpdateButtonControl.baml

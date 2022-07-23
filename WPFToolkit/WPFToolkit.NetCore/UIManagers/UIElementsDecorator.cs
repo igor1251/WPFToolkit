@@ -150,7 +150,7 @@ namespace WPFToolkit.NetCore.UIManagers
             var textBox = new MarkedTextBoxControl();
             textBox.Margin = new Thickness(DEFAULT_LEFT_MARGIN, DEFAULT_TOP_MARGIN, DEFAULT_RIGHT_MARGIN, DEFAULT_BOTTOM_MARGIN);
             textBox.Label = description.Label;
-            textBox.RegexMask = description.RegexMast;
+            textBox.TextBox.SetBinding(TextBox.TextProperty, description.Binding);
             if (description.TextChanged != null)
             {
                 textBox.TextChanged = description.TextChanged;

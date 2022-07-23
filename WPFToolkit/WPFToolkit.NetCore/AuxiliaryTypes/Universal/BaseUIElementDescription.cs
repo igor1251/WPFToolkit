@@ -12,10 +12,6 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.Universal
         /// <summary>
         /// DataContext для элемента управления (необходим для привязки)
         /// </summary>
-        public object? Source { get; set; } 
-        /// <summary>
-        /// Описание привязок элемента управления
-        /// </summary>
-        public string? Property { get; set; }
+        public Binding Binding { get; set; } = new();
     }
 }

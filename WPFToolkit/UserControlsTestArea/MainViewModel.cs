@@ -129,37 +129,12 @@ namespace UserControlsTestArea
         }
 
         [ICommand]
-        async void RunReportWindow()
+        void RunReportWindow()
         {
             var win = new ReportWindow();
-
-            Dictionary<UIElementLocation, IEnumerable<Guid>> controls = new();
-            textBoxAddr = UIElementsDecorator.CreateMarkedTextBox(new MarkedTextBoxDescription("test", null, "^([0-9]|[1-9][0-9])$"));
-            controls.Add(UIElementLocation.TOP, new List<Guid>()
-            {
-                UIElementsDecorator.CreateButton(new ButtonDescription("test", ShowMessageCommand)),
-                textBoxAddr,
-            });
-            controls.Add(UIElementLocation.MENU, new List<Guid>()
-            {
-                UIElementsDecorator.CreateMenu(new List<MenuItemDescription>
-                {
-                    new MenuItemDescription("Yeah", new List<MenuItemDescription>
-                    {
-                        new("UwU", null, ShowEntryTextCommand),
-                    }, null),
-                }, "File"),
-            });
-            controls.Add(UIElementLocation.CENTER, new List<Guid>()
-            {
-                UIElementsDecorator.CreateDataGrid(new DataGridColumnDescription[]
-                {
-                    new("Key", "Ключ", DataGridColumnType.TEXT_COLUMN),
-                    new("Value", "Значение", DataGridColumnType.CHECKBOX_COLUMN),
-                }, await GetContent.Invoke()),
-            });
-            win.ControlsCollection = controls;
-
+            ReportViewModel vm = new();
+            win.DataContext = vm;
+            win.ControlsCollection = vm.Controls;
             win.ShowDialog();
         }
     }

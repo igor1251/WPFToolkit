@@ -5,7 +5,7 @@ using WPFToolkit.NetCore.AuxiliaryTypes.Universal;
 
 namespace WPFToolkit.NetCore.AuxiliaryTypes.TextBoxes
 {
-    public class MarkedTextBoxDescription
+    public class MarkedTextBoxDescription : BaseUIElementDescription
     {
         string label = "MarkedTextBox";
         /// <summary>
@@ -20,11 +20,6 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.TextBoxes
                 label = value;
             }
         }
-        /// <summary>
-        /// Регулярное выражение для валидации пользовательского ввода
-        /// </summary>
-        public string RegexMast { get; set; } = string.Empty;
-        //не работает привязка, заменена костылем - обработчиком события изменения текста
         public TextChangedEventHandler? TextChanged { get; init; }
         /// <summary>
         /// Создает описание маркированного поля для ввода
@@ -33,11 +28,11 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.TextBoxes
         /// <param name="location">Расположение</param>
         /// <param name="textChanged">Обработчик события изменения текста</param>
         /// <param name="regexMask">Регулярное выражение, фильтрующее ввод</param>
-        public MarkedTextBoxDescription(string label, TextChangedEventHandler? textChanged = null, string regexMask = "")
+        public MarkedTextBoxDescription(string label, Binding binding = null, TextChangedEventHandler? textChanged = null)
         {
             Label = label;
             TextChanged = textChanged;
-            RegexMast = regexMask;
+            Binding = binding;
         }
     }
 }
