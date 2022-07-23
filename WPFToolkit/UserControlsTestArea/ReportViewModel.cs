@@ -2,28 +2,29 @@
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
 using System.Windows.Input;
-using WPFToolkit.NetCore.AuxiliaryTypes;
 using WPFToolkit.NetCore.AuxiliaryTypes.Buttons;
-using WPFToolkit.NetCore.AuxiliaryTypes.DataGridColumns;
 using WPFToolkit.NetCore.AuxiliaryTypes.TextBoxes;
 using WPFToolkit.NetCore.AuxiliaryTypes.Menus;
 using WPFToolkit.NetCore.AuxiliaryTypes.ViewModels;
 using WPFToolkit.NetCore.AuxiliaryTypes.Universal;
-using System.Windows.Media;
 using WPFToolkit.NetCore.UIManagers;
 using System.Text.RegularExpressions;
+using System.Windows.Media;
 
 namespace UserControlsTestArea
 {
-    public partial class ReportViewModel : ViewModelBase
+    [INotifyPropertyChanged]
+    public partial class ReportViewModel : IViewModel
     {
-        public Dictionary<UIElementLocation, IEnumerable<Guid>> Controls = new();
+        [ObservableProperty]
+        bool isBusy = false;
+
+        [ObservableProperty]
+        string title = string.Empty;
 
         string userText = string.Empty;
         public string UserText
@@ -38,10 +39,37 @@ namespace UserControlsTestArea
             }
         }
 
+        public Func<string> ViewCaptionGetter 
+        { 
+            get => () => $"Caption example {DateTime.Now}";
+        }
+
+        public Dictionary<UIElementLocation, IEnumerable<Guid>> Controls { get; } = new();
+
+        [ICommand]
+        void Update()
+        {
+            Title = ViewCaptionGetter.Invoke();
+        }
+
         [ICommand]
         void ShowText()
         {
             MessageBox.Show(UserText);
+        }
+
+        [ICommand]
+        async void MakeBusy()
+        {
+            IsBusy = true;
+            await Task.Run(() => Thread.Sleep(3000));
+            IsBusy = false;
+        }
+
+        [ICommand]
+        void ShowGreeting()
+        {
+            MessageBox.Show("!!!Greetings!!!");
         }
 
         public ReportViewModel()
@@ -55,8 +83,21 @@ namespace UserControlsTestArea
             });
             Controls.Add(UIElementLocation.BOTTOM, new List<Guid>()
             {
-                UIElementsDecorator.CreateButton(new ButtonDescription("test", ShowTextCommand)),
+                UIElementsDecorator.CreateButton(new ButtonDescription("Show user input", ShowTextCommand)),
+                UIElementsDecorator.CreateButton(new ButtonDescription("Update", UpdateCommand, Color.FromRgb(250, 105, 105))),
+                UIElementsDecorator.CreateButton(new ButtonDescription("Make busy", MakeBusyCommand)),
             });
+            Controls.Add(UIElementLocation.MENU, new List<Guid>()
+            {
+                UIElementsDecorator.CreateMenu(new List<MenuItemDescription>()
+                {
+                    new MenuItemDescription("Print", new List<MenuItemDescription>()
+                    {
+                        new MenuItemDescription("Greeting", null, ShowGreetingCommand),
+                    }, null)
+                }, "File"),
+            });
+            Update();
         }
     }
 }

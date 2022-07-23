@@ -32,6 +32,25 @@ namespace WPFToolkit.NetCore.Controls
         public static readonly DependencyProperty ControlsCollectionProperty =
             DependencyProperty.Register("ControlsCollection", typeof(IDictionary<UIElementLocation, IEnumerable<Guid>>), typeof(ReportWindow));
 
+        public static readonly DependencyProperty ViewModelProperty =
+            DependencyProperty.Register("ViewModel", typeof(IViewModel), typeof(ReportWindow));
+
+        /// <summary>
+        /// ViewModel для окна отчета
+        /// </summary>
+        public IViewModel ViewModel
+        {
+            get { return (IViewModel)GetValue(ViewModelProperty); }
+            set 
+            {
+                DataContext = value;
+                ControlsCollection = value.Controls;
+                SetValue(ViewModelProperty, value); 
+            }
+        }
+        /// <summary>
+        /// Коллекция элементов управления для окна отчета
+        /// </summary>
         public IDictionary<UIElementLocation, IEnumerable<Guid>> ControlsCollection
         {
             get { return (IDictionary<UIElementLocation, IEnumerable<Guid>>)GetValue(ControlsCollectionProperty); }
@@ -70,10 +89,14 @@ namespace WPFToolkit.NetCore.Controls
                 SetValue(ControlsCollectionProperty, value); 
             }
         }
-
-        public ReportWindow()
+        /// <summary>
+        /// Конструктор окна отчета
+        /// </summary>
+        /// <param name="viewModel">ViewModel для окна отчета</param>
+        public ReportWindow(IViewModel viewModel)
         {
             InitializeComponent();
+            ViewModel = viewModel;
         }
     }
 }

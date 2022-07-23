@@ -25,6 +25,11 @@ namespace WPFToolkit.NetCore.UIManagers
         const double BUTTON_TOP_PADDING = 5;
         const double BUTTON_BOTTOM_PADDING = 5;
 
+        const double MENUITEM_LEFT_PADDING = 7;
+        const double MENUITEM_RIGHT_PADDING = 7;
+        const double MENUITEM_TOP_PADDING = 2;
+        const double MENUITEM_BOTTOM_PADDING = 2;
+
         const double DEFAULT_LEFT_MARGIN = 5;
         const double DEFAULT_RIGHT_MARGIN = 5;
         const double DEFAULT_TOP_MARGIN = 5;
@@ -67,6 +72,7 @@ namespace WPFToolkit.NetCore.UIManagers
                     Command = item.Command,
                     HorizontalContentAlignment = HorizontalAlignment.Left,
                     VerticalContentAlignment = VerticalAlignment.Center,
+                    Padding = new Thickness(MENUITEM_LEFT_PADDING, MENUITEM_TOP_PADDING, MENUITEM_RIGHT_PADDING, MENUITEM_BOTTOM_PADDING),
                     ItemsSource = GenerateMenuItemsCollection(item.SubItems)
                 };
                 result.Add(menuItem);
@@ -80,7 +86,7 @@ namespace WPFToolkit.NetCore.UIManagers
         /// Создает Button и добавляет в коллекцию UI элементов
         /// </summary>
         /// <param name="description">Описание кнопки</param>
-        /// <returns></returns>
+        /// <returns>Guid, присвоенный созданному элементу</returns>
         public static Guid CreateButton(ButtonDescription description)
         {
             var button = new Button();
@@ -98,7 +104,7 @@ namespace WPFToolkit.NetCore.UIManagers
         /// Создает DataGrid и добавляет в коллекцию UI элементов
         /// </summary>
         /// <param name="columnDescriptions">Коллекция описаний столбцов</param>
-        /// <returns></returns>
+        /// <returns>Guid, присвоенный созданному элементу</returns>
         public static Guid CreateDataGrid(IEnumerable<DataGridColumnDescription> columnDescriptions, DataTable? Content = null)
         {
             DataGrid dataGrid = new();
@@ -128,13 +134,14 @@ namespace WPFToolkit.NetCore.UIManagers
         /// Создает Menu и добавляет в коллекцию элементов
         /// </summary>
         /// <param name="descriptions">Коллекция описаний элементов меню</param>
-        /// <returns></returns>
+        /// <returns>Guid, присвоенный созданному элементу</returns>
         public static Guid CreateMenu(IEnumerable<MenuItemDescription> descriptions, string header = null)
         {           
             MenuItem rootMenuItem = new()
             {
                 HorizontalContentAlignment = HorizontalAlignment.Left,
                 VerticalContentAlignment = VerticalAlignment.Center,
+                Padding = new Thickness(MENUITEM_LEFT_PADDING, MENUITEM_TOP_PADDING, MENUITEM_RIGHT_PADDING, MENUITEM_BOTTOM_PADDING),
                 ItemsSource = GenerateMenuItemsCollection(descriptions)
             };
             if (!string.IsNullOrEmpty(header)) rootMenuItem.Header = header;
@@ -144,7 +151,7 @@ namespace WPFToolkit.NetCore.UIManagers
         /// Создает MarkedTextBox и добавляет в коллекцию элементов
         /// </summary>
         /// <param name="description"></param>
-        /// <returns></returns>
+        /// <returns>Guid, присвоенный созданному элементу</returns>
         public static Guid CreateMarkedTextBox(MarkedTextBoxDescription description)
         {
             var textBox = new MarkedTextBoxControl();
@@ -160,7 +167,7 @@ namespace WPFToolkit.NetCore.UIManagers
         /// <summary>
         /// Создает индикатор занятости
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Guid, присвоенный созданному элементу</returns>
         public static Guid CreateBusyControl()
         {
             BusyControl busyControl = new();

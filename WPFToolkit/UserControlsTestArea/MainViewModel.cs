@@ -40,8 +40,6 @@ namespace UserControlsTestArea
                     flag = !flag;
                     table.Rows.Add($"value-{i}", flag);
                 }
-
-                //Thread.Sleep(2000);
             });
             genTask.Start();
             await genTask;
@@ -65,76 +63,10 @@ namespace UserControlsTestArea
             };
         };
 
-        [ObservableProperty]
-        DataRowView? selectedRowView;
-
-        [ObservableProperty]
-        string filter = string.Empty;
-
-        [ObservableProperty]
-        string entryDescription = "testEntry";
-
-        [ObservableProperty]
-        string entryText = "";
-
-        [ObservableProperty]
-        DateTime selectedDateTime = DateTime.Now;
-
-        [ICommand]
-        void ShowSelectedData()
-        {
-            if (SelectedRowView == null) return;
-            MessageBox.Show($"{SelectedRowView.Row["Key"]} {SelectedRowView.Row["Value"]}");
-        }
-
-        [ICommand]
-        async void MakeBusy()
-        {
-            IsBusy = true;
-            Task t = new Task(() =>
-            {
-                Thread.Sleep(5000);
-            });
-            t.Start();
-            await t.ContinueWith((t) =>
-            {
-                IsBusy = false;
-            });
-        }
-
-        [ICommand]
-        void ApplyFilter()
-        {
-            Filter = "Key LIKE 'value-30'";
-        }
-
-        [ICommand]
-        void ShowSelectedDateTime()
-        {
-            MessageBox.Show(SelectedDateTime.ToString());
-        }
-
-        [ICommand]
-        void ShowMessage()
-        {
-            MessageBox.Show("Работает");
-        }
-
-        Guid textBoxAddr;
-
-        [ICommand]
-        void ShowEntryText()
-        {
-            MessageBox.Show((UIElementsManager<Control>.Instance.Get(textBoxAddr) as MarkedTextBoxControl)?.Text);
-        }
-
         [ICommand]
         void RunReportWindow()
         {
-            var win = new ReportWindow();
-            ReportViewModel vm = new();
-            win.DataContext = vm;
-            win.ControlsCollection = vm.Controls;
+            var win = new ReportWindow(new ReportViewModel());
             win.ShowDialog();
         }
     }

@@ -40,11 +40,10 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.Buttons
         /// <param name="type">Тип кнопки (ссылка, обычная или большая)</param>
         /// <param name="location">В каком контейнере расположить кнопку</param>
         /// <param name="color">Цвет кнопки</param>
-        public ButtonDescription(string content, ICommand? command, ButtonType type = ButtonType.BUTTON, Color? color = null)
+        public ButtonDescription(string content, ICommand? command, Color? color = null)
         {
             Content = content;
             Command = command;
-            Type = type;
             BackgroundColor = color;
         }
     }

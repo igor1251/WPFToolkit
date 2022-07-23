@@ -14,12 +14,16 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.ViewModels
     public interface IViewModel
     {
         /// <summary>
-        /// Делегат на метод получения описания окна
+        /// Индикатор занятости формы
         /// </summary>
-        Func<string> ViewCaptionGetter { get; init; }
+        bool IsBusy { get; }
+        /// <summary>
+        /// Заголовок окна
+        /// </summary>
+        string Title { get; }
         /// <summary>
         /// Словарь элементов упарвления, доступных к отображению на форме
         /// </summary>
-        Dictionary<UIElementLocation, IEnumerable<Guid>> Controls { get; init; }
+        Dictionary<UIElementLocation, IEnumerable<Guid>> Controls { get; }
     }
 }
