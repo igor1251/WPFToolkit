@@ -86,8 +86,21 @@ namespace WPFToolkit.NetCore.Controls
                         }
                     }
                 }
+                //BusyControl должен быть добавлен самым последним для того, чтобы иметь возможность
+                //быть отображаемым поверх всего содержимого
+                InsertBusyControl();
                 SetValue(ControlsCollectionProperty, value); 
             }
+        }
+        void InsertBusyControl()
+        {
+            BusyControl busyControl = new();
+            busyControl.SetBinding(BusyControl.IsBusyProperty, new Binding("IsBusy"));
+            busyControl.SetValue(Grid.RowProperty, 0);
+            busyControl.SetValue(Grid.RowSpanProperty, 4);
+            busyControl.SetValue(Grid.ColumnProperty, 0);
+            busyControl.SetValue(Grid.ColumnSpanProperty, 3);            
+            ContentGrid.Children.Add(busyControl);
         }
         /// <summary>
         /// Конструктор окна отчета

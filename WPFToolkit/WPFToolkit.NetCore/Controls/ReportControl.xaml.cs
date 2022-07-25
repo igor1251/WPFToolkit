@@ -30,7 +30,7 @@ namespace WPFToolkit.NetCore.Controls
             DependencyProperty.Register("ContentGetter", typeof(Func<Task<DataTable>>), typeof(ReportControl));
 
         public static readonly DependencyProperty DataGridColumnsGetterProperty =
-            DependencyProperty.Register("DataGridColumnsGetter", typeof(Func<DataGridColumnDescription[]>), typeof(ReportControl));
+            DependencyProperty.Register("DataGridColumnsGetter", typeof(Func<ColumnTemplate[]>), typeof(ReportControl));
 
         public static readonly DependencyProperty IsBusyProperty = 
             DependencyProperty.Register("IsBusy", typeof(bool), typeof(ReportControl), new PropertyMetadata(false));
@@ -189,9 +189,9 @@ namespace WPFToolkit.NetCore.Controls
         /// Действие, выполняемое для получения массива столбцов,
         /// отображаемых в DataGrid
         /// </summary>
-        public Func<DataGridColumnDescription[]> DataGridColumnsGetter
+        public Func<ColumnTemplate[]> DataGridColumnsGetter
         {
-            get { return (Func<DataGridColumnDescription[]>)GetValue(DataGridColumnsGetterProperty); }
+            get { return (Func<ColumnTemplate[]>)GetValue(DataGridColumnsGetterProperty); }
             set { SetValue(DataGridColumnsGetterProperty, value); }
         }
 
@@ -234,12 +234,12 @@ namespace WPFToolkit.NetCore.Controls
         /// <typeparam name="T">Тип столбца</typeparam>
         /// <param name="columnDescription">Описание свойств столбца (привязки и т.д.)</param>
         /// <returns>Столбец DataGrid</returns>
-        static T GenerateColumn<T>(DataGridColumnDescription columnDescription) where T : DataGridBoundColumn, new()
+        static T GenerateColumn<T>(ColumnTemplate columnDescription) where T : DataGridBoundColumn, new()
         {
             var column = new T
             {
-                Binding = new Binding(columnDescription.InDatabaseName),
-                Header = columnDescription.DisplayName,
+                Binding = new Binding(columnDescription.ColumnName),
+                Header = columnDescription.Header,
                 Width = DataGridLength.Auto
             };
 
@@ -258,10 +258,10 @@ namespace WPFToolkit.NetCore.Controls
             {
                 switch (columnDescription.ColumnType)
                 {
-                    case DataGridColumnType.TEXT_COLUMN:
+                    case ColumnType.TEXT_COLUMN:
                         ContentGrid.Columns.Add(GenerateColumn<DataGridTextColumn>(columnDescription));
                         break;
-                    case DataGridColumnType.CHECKBOX_COLUMN:
+                    case ColumnType.CHECKBOX_COLUMN:
                         ContentGrid.Columns.Add(GenerateColumn<DataGridCheckBoxColumn>(columnDescription));
                         break;
                 }

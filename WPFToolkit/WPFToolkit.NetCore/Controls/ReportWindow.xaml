@@ -25,6 +25,5 @@
         <WrapPanel x:Name="LeftControlsPanel" Grid.Column="0" Grid.Row="2" Orientation="Vertical" />
         <WrapPanel x:Name="RightControlsPanel" Grid.Column="2" Grid.Row="2" Orientation="Vertical" />
         <WrapPanel x:Name="BottomControlsPanel" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="3" />
-        <local:BusyControl x:Name="BusyIndicator" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="0" Grid.RowSpan="4" IsBusy="{Binding ElementName=Report, Path=ViewModel.IsBusy}" />
     </Grid>
 </Window>
