@@ -18,6 +18,7 @@ using WPFToolkit.NetCore.AuxiliaryTypes.DataGridColumns;
 using WPFToolkit.NetCore.AuxiliaryTypes;
 using System.Windows.Controls;
 using System.Data;
+using WPFToolkit.NetCore.AuxiliaryTypes.Filters;
 
 namespace UserControlsTestArea
 {
@@ -119,7 +120,12 @@ namespace UserControlsTestArea
         [ICommand]
         void ApplyFilter()
         {
-            Table.DefaultView.RowFilter = "col1 = True";
+            FilterExpressionsCollection filters = new FilterExpressionsCollection()
+            {
+                { "col1", typeof(Boolean), true },
+                { "col2", typeof(string), UserText }
+            };
+            Table.DefaultView.RowFilter = filters.ToString();
         }
 
         [ICommand]
