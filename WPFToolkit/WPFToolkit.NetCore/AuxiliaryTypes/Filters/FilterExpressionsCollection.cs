@@ -10,7 +10,12 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.Filters
     public class FilterExpressionsCollection : IEnumerable<FilterExpression>
     {
         readonly List<FilterExpression> expressions = new();
-
+        /// <summary>
+        /// Добавляет новый фильтр в коллекцию фильтров
+        /// </summary>
+        /// <param name="columnName">Имя столбца, по которому будет работать фильтр</param>
+        /// <param name="requiredValueType">Тип значения, по которому будет выполняться фильтрация</param>
+        /// <param name="requiredValue">Значение фильтра</param>
         public void Add(string columnName, Type requiredValueType, object requiredValue)
         {
             expressions.Add(new FilterExpression(columnName, requiredValueType, requiredValue));
@@ -28,7 +33,7 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.Filters
 
         public override string ToString()
         {
-            return string.Join(" AND ", expressions);
+            return string.Join(" AND ", expressions.Where(filter => !string.IsNullOrEmpty(filter.ToString())));
         }
     }
 }

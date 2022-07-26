@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "EjggPm3QXSxtt30WAjdz2nqm3PH9OvcZowu9llMTIFrQaEZ5gy+bdock50Si84HfsHx9PJEzjP55uQgr0+U66Q==",
+  "dgSpecHash": "58P/0UuitSmXE/4tY2mkO/MmS4d6J/ophJ6JYi/Vj2aqwvf8z7raK5KIrsxEm1SKkGSCYXlUZxiTKj6pIuoDKA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\babichev.i\\Documents\\GitHub\\WPFToolkit\\WPFToolkit\\UserControlsTestArea\\UserControlsTestArea.csproj",
+  "projectFilePath": "D:\\Libraries\\Documents\\GitHub\\WPFToolkit\\WPFToolkit\\UserControlsTestArea\\UserControlsTestArea.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\babichev.i\\.nuget\\packages\\communitytoolkit.mvvm\\7.1.2\\communitytoolkit.mvvm.7.1.2.nupkg.sha512"
+    "C:\\Users\\STARCONTROL\\.nuget\\packages\\communitytoolkit.mvvm\\7.1.2\\communitytoolkit.mvvm.7.1.2.nupkg.sha512"
   ],
   "logs": []
 }

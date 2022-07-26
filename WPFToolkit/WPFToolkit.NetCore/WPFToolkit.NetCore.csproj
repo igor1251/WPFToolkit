@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Helpers\**" />
+    <EmbeddedResource Remove="Helpers\**" />
+    <None Remove="Helpers\**" />
+    <Page Remove="Helpers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Controls\Assets\Icons\calendar.png" />
     <None Remove="Controls\Assets\Icons\download-data.png" />
     <None Remove="Controls\Assets\Icons\left-arrow.png" />
@@ -30,10 +37,6 @@
     <Resource Include="Controls\Assets\Icons\right-arrow.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Resource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Helpers\" />
   </ItemGroup>
 
 </Project>
