@@ -120,7 +120,7 @@ namespace UserControlsTestArea
         [ICommand]
         void ApplyFilter()
         {
-            FilterExpressionsCollection filters = new FilterExpressionsCollection()
+            FilterExpressionsCollection filters = new()
             {
                 { "col1", typeof(Boolean), true },
                 { "col2", typeof(string), UserText }

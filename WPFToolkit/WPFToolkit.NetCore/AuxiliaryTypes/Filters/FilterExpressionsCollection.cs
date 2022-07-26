@@ -9,7 +9,7 @@ namespace WPFToolkit.NetCore.AuxiliaryTypes.Filters
 {
     public class FilterExpressionsCollection : IEnumerable<FilterExpression>
     {
-        List<FilterExpression> expressions = new();
+        readonly List<FilterExpression> expressions = new();
 
         public void Add(string columnName, Type requiredValueType, object requiredValue)
         {
