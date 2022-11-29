@@ -1,0 +1,8 @@
+*.suo
+**/bin
+**/obj
+*.dll
+.vs/
+/account.txt
+.vscode/tasks.json
+.idea
