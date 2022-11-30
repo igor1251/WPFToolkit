@@ -3,6 +3,9 @@
 **/obj
 *.dll
 .vs/
-/account.txt
-.vscode/tasks.json
-.idea
+**/**/.vs
+**/**/**/.vs
+**/**/bin
+**/**/**/bin
+**/**/obj
+**/**/**/obj
